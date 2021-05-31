@@ -1,0 +1,11 @@
+Model Information:
+* title:	Tesla CyberTruck 6*6 Sahara-Sport SDC
+* source:	https://sketchfab.com/3d-models/tesla-cybertruck-66-sahara-sport-sdc-58045e65735c4dc3871aa2f165c1bf19
+* author:	SDC (https://sketchfab.com/3Duae)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Tesla CyberTruck 6*6 Sahara-Sport SDC" (https://sketchfab.com/3d-models/tesla-cybertruck-66-sahara-sport-sdc-58045e65735c4dc3871aa2f165c1bf19) by SDC (https://sketchfab.com/3Duae) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

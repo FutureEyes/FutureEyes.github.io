@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AR Web</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- import the webpage's javascript file -->
+    <script src="/script.js" defer></script>
+  </head>
+  <body>
+    <h1>Select a Car and view it in your place</h1>
+    <div class="box">
+      <h2>Tesla truck</h2>
+      <model-viewer
+         src="./assets/models/teslacybertruck/scene.gltf" 
+        ios-src="./assets/models/TeslaCyberTruck.usdz" 
+        alt="Tesla truck"
+        background-color="#42697b"
+        auto-rotate
+        camera-controls
+        ar
+      ></model-viewer>
+      <div class="cc">
+        <a href="" target="_blank">
+          <img
+            src=""
+          />
+          <img
+            src=""
+          />
+        </a>
+        &nbsp;&nbsp;
+        <a
+          href=""
+          target="_blank"
+          >Future Eyes</a
+        >
+      </div>
+    </div>
+    <div class="box">
+      <h2>Nissan 1978</h2>
+      <model-viewer
+        src="./assets/models/nissan1978/scene.gltf" 
+        ios-src="./assets/models/Nissan1978.usdz" 
+        alt="Tesla truck"
+        background-color="#42697b"
+        auto-rotate
+        camera-controls
+        ar
+      ></model-viewer>
+      <div class="cc">
+        <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">
+          <img
+            src=""
+          />
+          <img
+            src=""
+          />
+        </a>
+        &nbsp; &nbsp;
+        <a
+          href=""
+          target="_blank"
+          >Future Eyes</a
+        >
+      </div>
+    </div>
+    <div class="box">
+      <h2>SUV</h2>
+      <model-viewer
+         src="./assets/models/suv_1/scene.gltf" 
+        ios-src="./assets/models/SUV_1.usdz" 
+        alt="SUV"
+        background-color="#42697b"
+        auto-rotate
+        camera-controls
+        ar
+      ></model-viewer>
+      <div class="cc">
+        <a href="" target="_blank">
+          <img
+            src=""
+          />
+          <img
+            src=""
+          />
+        </a>
+        &nbsp; &nbsp;
+        <a
+          href=""
+          target="_blank"
+          >Future Eyes</a
+        >
+      </div>
+    </div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"
+    ></script>
+  </body>
+</html>
