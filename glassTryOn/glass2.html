@@ -74,6 +74,9 @@
           } // end onError()
         }) // end JEEWIDGET.start call 
       } // end main()
+    
+    document.getElementById("defaultGlass").click();
+ });
     </script>
   </head>
 
@@ -111,6 +114,10 @@
                   <button id='JeeWidgetAdjust'>
                       <div class="buttonIcon"><i class="fas fa-arrows-alt"></i></div>Adjust
                   </button>
+                <button id='defaultGlass'>
+                      <button onclick="JEEWIDGET.load_modelStandalone('glasses3D/glasses2.json')">
+                  </button>
+
                   <!-- RESIZE WIDGET BUTTON: -->
                   <!--<button id='buttonResizeCanvas' onclick='test_resizeCanvas();'>
                       <div class="buttonIcon"><i class="fas fa-sync-alt"></i></div>Resize widget
