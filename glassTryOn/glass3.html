@@ -84,6 +84,10 @@
           } // end onError()
         }) // end JEEWIDGET.start call 
       } // end main()
+       function setDefaultModel() {
+         JEEWIDGET.load_modelStandalone(glassesSkus[1]);
+         setURLButtonSeePrice(1);
+      }
        function loadModel(clicked_id) {
         switch (clicked_id) {
           case 1:
