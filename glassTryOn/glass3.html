@@ -39,9 +39,13 @@
 
         _isResized = !_isResized;
       }
-     
+     function main()
+     {
+        init();
+        setDefaultModel();
+	 }
       // entry point:
-      function main() {
+      function init() {
           
         JEEWIDGET.start({
             sku: '',
@@ -82,7 +86,6 @@
             } // end switch
           } // end onError()
         }) // end JEEWIDGET.start call 
-         setDefaultModel();
       } // end main()
        function setDefaultModel() {
          JEEWIDGET.load_modelStandalone(glassesSkus[1]);
