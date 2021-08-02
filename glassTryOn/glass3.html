@@ -21,7 +21,6 @@
 
     <script>
           const glassesSkus = [
-        "glasses3D/glasses-SF-test.json",
         "glasses3D/glassOmer.json",
         "glasses3D/glass2Updated.json",
       ];
@@ -101,17 +100,12 @@
             JEEWIDGET.load_modelStandalone(glassesSkus[1]);
             setURLButtonSeePrice(1);
             break;
-          case 3:
-            
-            JEEWIDGET.load_modelStandalone(glassesSkus[2]);
-            setURLButtonSeePrice(2);
-            break;
           default:
             return;
         }
          function setURLButtonSeePrice(index) {
         const button = document.getElementById("buttonSeePrice");
-        button.setAttribute("href", productURLs[index]);
+        button.setAttribute("href", gfngfn[index]);
       }
       }
     </script>
@@ -155,20 +149,18 @@
                   <!--<button id='buttonResizeCanvas' onclick='test_resizeCanvas();'>
                       <div class="buttonIcon"><i class="fas fa-sync-alt"></i></div>Resize widget
                   </button>-->
-                  <a target="_blank" href="https://www.carolinalemke.co.il/catalog/product/view/id/42585/s/cl5963-01/category/33  id='buttonSeePrice">More</a>
+                  <a target="_blank" href="https://www.carolinalemke.co.il/  id='buttonSeePrice">More</a>
 
               </div>
               <!-- CHANGE MODEL BUTTONS: -->
               <div class='JeeWidgetControls' id='JeeWidgetChangeModelContainer'>
 					<button id="1" onClick="loadModel(1)">
-				        <img src="./images/model1.png" />
-			         </button>
-			        <button id="2" onClick="loadModel(2)">
 				        <img src="./images/model2.png" />
-			        </button>
-			        <button id="3" onClick="loadModel(3)">
+			         </button>
+			        <button id="2" onClick="loadModel(1)">
 				        <img src="./images/model3.png" />
 			        </button>
+			        
                 <!-- <button onclick="JEEWIDGET.load_modelStandalone('glasses3D/glasses-SF-test.json')"><img src="./images/model2.png"></button> 
                   <button onclick="JEEWIDGET.load_modelStandalone('glasses3D/glassOmer.json')"><img src="./images/model1.png"></button>
                   <!--<button onclick="JEEWIDGET.load('rayban_erika_havaneGun_marronDegrade')"><img src="./images/model3.png"></button>
