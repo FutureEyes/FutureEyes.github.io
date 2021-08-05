@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <title>web AR</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="style.css" />
+
+    
+    <!-- The following libraries and polyfills are recommended to maximize browser support -->
+    <!-- NOTE: you must adjust the paths as appropriate for your project -->
+
+    <!-- 🚨 REQUIRED: Web Components polyfill to support Edge and Firefox < 63 -->
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script>
+
+    <!-- 💁 OPTIONAL: Intersection Observer polyfill for better performance in Safari and IE11 -->
+    <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+
+    <!-- 💁 OPTIONAL: Resize Observer polyfill improves resize behavior in non-Chrome browsers -->
+    <script src="https://unpkg.com/resize-observer-polyfill@1.5.0/dist/ResizeObserver.js"></script>
+
+    <!-- 💁 OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
+    <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0MM654BEQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-D0MM654BEQ');
+    </script>
+
+  </head>
+
+
+  
+  <body>
+    <div id="card">
+   
+      <model-viewer
+        src="assets/Models/ELGS-BS.glb"
+        ios-src="assets/Models/ELGS-BS.usdz"
+        quick-look-browsers="safari chrome"
+        alt="ELGS-BS"
+        ar-modes="webxr scene-viewer quick-look"
+        shadow-intensity="1"
+        camera-controls
+        autoplay
+    
+        exposure="1"
+        ar
+      >
+
+     
+        <button slot="ar-button" id="ar-button">
+          View in your space
+        </button>
+       
+        <div id="ar-prompt">
+          <img src="assets/images/hand.png" />
+        </div>
+    
+        <button id="ar-failure">
+          AR is not tracking!
+        </button>
+        
+        
+      </model-viewer>
+
+      <div>
+        <section class="attribution">
+          <span>
+            <h1>Demo List Product</h1>
+            <span>
+             choose product in list and push to your place
+            </span>
+          </span>
+          
+        </section>
+      </div>
+ 
+      <div class="slider">
+        <div class="slides">
+          <button
+            class="slide selected"
+            onclick="switchSrc(this, 'ELGS-BS')"
+            style="background-image: url('assets/images/ELGS-BS.png');"
+          ></button
+          ><button
+            class="slide"
+            onclick="switchSrc(this, 'ELGS-TB')"
+            style="background-image: url('assets/images/ELGS-TB.png');"
+          ></button
+          ><button
+            class="slide"
+            onclick="switchSrc(this, 'ERMS')"
+            style="background-image: url('assets/images/ERMS.png');"
+          ></button
+          ><button
+            class="slide"
+            onclick="switchSrc(this, 'EPCS')"
+            style="background-image: url('assets/images/EPCS-BS.png');"
+          ></button
+          ><button
+            class="slide"
+            onclick="switchSrc(this, 'ELGE')"
+            style="background-image: url('assets/images/ELGE-TB.png');"
+          ></button>
+          <button
+            class="slide"
+            onclick="switchSrc(this, 'EGSS')"
+            style="background-image: url('assets/images/EGSS-BS.png');"
+          ></button>
+           <button
+            class="slide"
+            onclick="switchSrc(this, 'SMSPickPlace')"
+            style="background-image: url('assets/images/SMSPickPlace.png');"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module">
+      const modelViewer = document.querySelector("model-viewer");
+    
+      window.switchSrc = (element, name) => {
+        const base = "assets/Models/" + name;
+        modelViewer.src = base + ".glb";
+        modelViewer.iosSrc = base + ".usdz"
+        modelViewer.alt = name;
+        
+        const slides = document.querySelectorAll(".slide");
+        slides.forEach(element => {
+          element.classList.remove("selected");
+        });
+        element.classList.add("selected");
+      };
+
+      document
+        .querySelector(".slider")
+        .addEventListener("beforexrselect", ev => {
+          // Keep slider interactions from affecting the XR scene.
+          ev.preventDefault();
+        });
+    </script>
+
+
+  <!-- 💁 Include both scripts below to support all browsers! -->
+
+  <!-- Loads <model-viewer> for modern browsers: -->
+  <script type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+  </script>
+
+  <!-- Loads <model-viewer> for old browsers like IE11: -->
+  <script nomodule
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js">
+  </script>
+  </body>
+
+  <footer>
+
+   
+    <span style="display: flex; align-items: center; justify-content: center;">Follow us:    
+      
+        
+      <span><a target="_blank" href="https://www.facebook.com/futureeyesvn">
+            <img style="padding-right: 3px; padding-left: 10px; height: 21px;" alt="Facebook" src="assets/images/FacebookIcon.png"></a> 
+      </span>
+      
+      <span><a target="_blank" href="https://www.futureeyes.vn">
+            <img style="padding-right: 1px; padding-left: 1px; height: 23px;" alt="LinkedIn" src="assets/images/chrome.png"></a>
+      </span>
+
+      
+     </span>
+     <!--<span>
+       
+  
+    </span>-->
+  </footer>
+
+</html>
