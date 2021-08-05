@@ -23,6 +23,7 @@
           const glassesSkus = [
         "glasses3D/glassOmer.json",
         "glasses3D/glass2Updated.json",
+        "glasses3D/tree1.json",
       ];
       const productURLs = [
         "https://www.carolinalemke.co.il/",
@@ -42,7 +43,6 @@
      function main()
      {
         init();
-        setDefaultModel();
 	 }
       // entry point:
       function init() {
@@ -103,7 +103,12 @@
             
             JEEWIDGET.load_modelStandalone(glassesSkus[1]);
             setURLButtonSeePrice(1);
-            break;
+                break;
+            case 3:
+
+                JEEWIDGET.load_modelStandalone(glassesSkus[2]);
+                setURLButtonSeePrice(2);
+                break;
           default:
             return;
         }
@@ -115,7 +120,6 @@
     </script>
   </head>
   <body ononline="init()">
-  <body onload="setDefaultModel()">
     <div class='content'>
 
 
