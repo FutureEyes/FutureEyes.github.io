@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    chroma-key
+  </title>
+  <meta name="description" content="chroma-key">
+  <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-chromakey-material/dist/aframe-chromakey-material.min.js"></script>
+  <!-- aframe extras -->
+  <!-- <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.12.4/dist/aframe-extras.min.js"></script> -->
+  <!-- webcomponentsjs -->
+  <!-- <script src="https://cdn.rawgit.com/webcomponents/webcomponentsjs/v0.7.24/webcomponents-lite.min.js"></script> -->
+  <!-- LRNWebComponents -->
+  <!-- <link href="https://cdn.rawgit.com/LRNWebComponents/build/0.2.0/build/default/build.html" rel="import" /> -->
+  <!-- include ar.js for A-Frame -->
+   <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+</head>
+
+<body>
+  <a-scene>
+    <a-assets>
+      <video id="greenscreenvideo" src="assets/video.mp4" loop autoplay></video>
+    </a-assets>
+    <a-entity material="shader: chromakey; src: #greenscreenvideo; color: 0.1 0.9 0.2" geometry="primitive: box"></a-entity>
+  </a-scene>
+
+<!--  <a-scene>-->
+<!--    <a-entity gltf-model="assets/animatedbox.gltf"></a-entity>-->
+<!--    <a-sky color="#ECECEC"></a-sky>-->
+<!--  </a-scene>-->
+  <script src="app.js"></script>
+</body>
+
+</html>
