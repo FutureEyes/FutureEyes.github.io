@@ -151,15 +151,15 @@
             <div class="card">
                 <model-viewer src="Models/Lincoln Unit A_4.glb" poster="images/Lincoln_.005.png" shadow-intensity="1" ar ar-modes="webxr scene-viewer quick-look" camera-controls camera-orbit="0deg 45deg 90%" alt="A 3D model carousel" style="width: 100%; height: 600px">
 
-              <!--<button slot="ar-button" style="background-color: #4D008C; border-radius: 4px; border: #000000; position: absolute; top: 16px; right: 16px; height: 40px; width: auto; ">
+              <button slot="ar-button" style="background-color: #4D008C; border-radius: 4px; border: #000000; position: absolute; top: 16px; right: 16px; height: 40px; width: auto; ">
                👆 <b style="color:#FFFFFF;"><strong>AR CLICK HERE</strong></b>
-              </button>-->
+              </button>
               <div id="ar-prompt">
                 <img src="images/"hand.png">
               </div>
-              <button id="ar-failure">
+              <!--<button id="ar-failure">
                 AR is not tracking!
-              </button>
+              </button>-->
               <div class="slider">
                 <div class="slides">
                   <button class="slide selected" onclick="switchSrc(this, 'Lincoln Unit A_4')" style="background-image:url('images/Lincoln_.005.png');">
@@ -177,10 +177,10 @@
                 slides.forEach((element) => {element.classList.remove("selected");});
                 element.classList.add("selected");
               };
-              document.querySelector(".slider").addEventListener('beforexrselect', (ev) => {
-                // Keep slider interactions from affecting the XR scene.
-                ev.preventDefault();
-              });
+              //document.querySelector(".slider").addEventListener('beforexrselect', (ev) => {
+              //  // Keep slider interactions from affecting the XR scene.
+              //  ev.preventDefault();
+              //});
             </script>
             <style>
               /* This keeps child nodes hidden while the element loads */
@@ -290,11 +290,11 @@
                 outline: 1px solid #4285f4;
               }
             </style>
-            <model-viewer camera-controls camera-orbit="-90deg 45deg 75%" id="reveal" loading="eager" src="Models/Lincoln Unit A_4.glb" ar="" ar-modes="scene-viewer webxr quick-look" ios-src="Models/usdz-lincoln_unit_a_4___1630105463932.usdz" alt="Lincoln SM" auto-rotate-delay="0" ar-scale="auto" camera-controls="" style="width: 100%; height: 600px" exposure="0.5"> <button slot="ar-button" style="background-color: rgb(255, 255, 255); border-radius: 8px; border: 1 px solid black; position: absolute; top: 20px; right: 20px; height: 40px; width: auto;">
+            <!--<model-viewer camera-controls camera-orbit="-90deg 45deg 75%" id="reveal" loading="eager" src="Models/Lincoln Unit A_4.glb" ar="" ar-modes="scene-viewer webxr quick-look" ios-src="Models/usdz-lincoln_unit_a_4___1630105463932.usdz" alt="Lincoln SM" auto-rotate-delay="0" ar-scale="auto" camera-controls="" style="width: 100%; height: 600px" exposure="0.5"> <button slot="ar-button" style="background-color: rgb(255, 255, 255); border-radius: 8px; border: 1 px solid black; position: absolute; top: 20px; right: 20px; height: 40px; width: auto;">
                    👆 <strong>AR CLICK HERE</strong>
               </button>
             </model-viewer>
-              </div>
+              </div>-->
 
             </model-viewer>
               </div>
