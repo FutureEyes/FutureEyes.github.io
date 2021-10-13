@@ -95,15 +95,14 @@ button:hover {
 }
 
 #JeeWidgetChangeModelContainer {
-   /* bottom: 36px;
-    height: 60px;*/
-    min-height: 100px;
-    width: 260px;
+    bottom: 36px;
+    height: 60px;
 }
-#JeeWidgetChangeModelContainer > button {
-  width: 30%;
-  min-width: auto;
-}
+ #JeeWidgetChangeModelContainer > button {
+        width: 30%;
+        min-width: auto;
+        object-fit: contain;
+ }
 
 #JeeWidgetLoading {
   position: fixed;
