@@ -99,9 +99,8 @@ button:hover {
     height: 40px;
 }
  #JeeWidgetChangeModelContainer > button {
-        width: 30%;
+        width: 20%;
         min-width: auto;
-        object-fit: contain;
  }
 
 #JeeWidgetLoading {
