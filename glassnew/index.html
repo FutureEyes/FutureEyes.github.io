@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AR Try On</title>
+    <title>AR Try ON</title>
     <meta charset='utf-8' />
 
     <!-- Forbid resize on pinch with IOS Safari: -->
@@ -20,23 +20,7 @@
     <link rel='stylesheet' href='css/JeelizVTOWidget.css' />
 
     <script>
-        const glassesSkus = [
-            "glasses3D/glasses3-fix-v2.json",
-            "glasses3D/glasses6-fix-v1.json",
-            "glasses3D/glasses4-fix-v5.json",
-            "glasses3D/glasses5-fix-v8.json"
-        ];
-        const productURLs = [
-            //glass 03
-            "https://www.carolinalemke.co.il/841313120906",
-            //glass06
-            "https://www.carolinalemke.co.il/9900000046477",
-            //glass 05
-            "https://www.carolinalemke.co.il/841313126274",
-            //glass 04
-            "https://www.carolinalemke.co.il/cl1647-06",
-        ];
-        let _isResized = false;
+      let _isResized = false;
       function test_resizeCanvas() {
         // halves the height:
         let halfHeightPx = Math.round(window.innerHeight / 2).toString() + 'px';
@@ -50,51 +34,46 @@
 
       // entry point:
       function main() {
-        JEELIZVTOWIDGET.start({
-            sku: 'rayban_wayfarer_havane_marron',
-            searchImageMask: 'https://https://github.com/FutureEyes/FutureEyes.github.io/blob/main/rayban.png',
-            searchImageColor: 0x4a8aa4,
-            callbackReady: function () {
-                console.log('INFO: glazz is ready :)');
-            },
-            onError: function (errorLabel) { // this function catches errors, so you can display custom integrated messages
-                alert('An error happened. errorLabel =' + errorLabel)
-                switch (errorLabel) {
-                    case 'WEBCAM_UNAVAILABLE':
-                        // the user has no camera, or does not want to share it.
-                        break;
+        JEEWIDGET.start({
+                sku: '',
+                searchImageMask: 'https://https://github.com/FutureEyes/FutureEyes.github.io/blob/main/rayban.png',
+                searchImageColor: 0x4a8aa4,
+                callbackReady: function () {
+                    console.log('INFO: glazz is ready :)');
+                },
+                onError: function (errorLabel) { // this function catches errors, so you can display custom integrated messages
+                    alert('An error happened. errorLabel =' + errorLabel)
+                    switch (errorLabel) {
+                        case 'NOFILE':
+                            // the user send an image, but it is not here
+                            break;
 
-                    case 'NOFILE':
-                        // the user send an image, but it is not here
-                        break;
+                        case 'WRONGFILEFORMAT':
+                            // the user upload a file which is not an image or corrupted
+                            break;
 
-                    case 'WRONGFILEFORMAT':
-                        // the user upload a file which is not an image or corrupted
-                        break;
+                        case 'INVALID_SKU':
+                            // the provided SKU does not match with a glasses model
+                            break;
 
-                    case 'INVALID_SKU':
-                        // the provided SKU does not match with a glasses model
-                        break;
+                        case 'FALLBACK_UNAVAILABLE':
+                            // we cannot switch to file upload mode. browser too old?
+                            break;
 
-                    case 'FALLBACK_UNAVAILABLE':
-                        // we cannot switch to file upload mode. browser too old?
-                        break;
+                        case 'PLACEHOLDER_NULL_WIDTH':
+                        case 'PLACEHOLDER_NULL_HEIGHT':
+                            // Something is wrong with the placeholder
+                            // (element whose id='JeeWidget')
+                            break;
 
-                    case 'PLACEHOLDER_NULL_WIDTH':
-                    case 'PLACEHOLDER_NULL_HEIGHT':
-                        // Something is wrong with the placeholder
-                        // (element whose id='JeelizVTOWidget')
-                        break;
-
-                    case 'FATAL':
-                    default:
-                        // a bit error happens:(
-                        break;
-                } // end switch
-            } // end onError()
-        }) // end JEELIZVTOWIDGET.start call
-        } // end main()
-
+                        case 'FATAL':
+                        default:
+                            // a bit error happens:(
+                            break;
+                    } // end switch
+                } // end onError()
+            }) // end JEEWIDGET.start call
+      } // end main()
 
 
       function load_modelBySKU(){
@@ -103,35 +82,10 @@
           JEELIZVTOWIDGET.load(sku);
         }
       }
-  function loadModel(clicked_id) {
-            switch (clicked_id) {
-                case 1:
-                    // And load the model
 
-                    JEEWIDGET.load_modelStandalone(glassesSkus[0]);
-                   // setURLButtonSeePrice(0);
-                    break;
-                case 2:
-
-                    JEEWIDGET.load_modelStandalone(glassesSkus[1]);
-                    //setURLButtonSeePrice(1);
-                    break;
-                case 3:
-
-                    JEEWIDGET.load_modelStandalone(glassesSkus[2]);
-                    //setURLButtonSeePrice(2);
-                    break;
-                case 4:
-
-                    JEEWIDGET.load_modelStandalone(glassesSkus[3]);
-                   // setURLButtonSeePrice(3);
-                    break;
-                default:
-                    return;
-            }
-  }
     </script>
   </head>
+
   <body onload="main()">
     <div class='content'>
 
@@ -141,7 +95,7 @@
           Glazz Try On
         </div>      
       </div>
-        </div>
+
 
       <!-- Please keep the same element IDs so that JEELIZVTOWIDGET can extract them from the DOM -->
 
@@ -172,37 +126,31 @@
           </button>
         </div>
 
-          <!-- CHANGE MODEL BUTTONS: -->
-          <div class='JeelizVTOWidgetControls' id='JeelizVTOWidgetChangeModelContainer'>
-              <button id="1" onClick="loadModel(1)">
-                  <img src="./images/glasses3.png" />
-              </button>
-              <button id="2" onClick="loadModel(2)">
-                  <img src="./images/glasses6.png" />
-              </button>
-              <button id="2" onClick="loadModel(3)">
-                  <img src="./images/glasses4.png" />
-              </button>
-              <button id="2" onClick="loadModel(4)">
-                  <img src="./images/glasses5.png" />
-              </button>
+        <!-- CHANGE MODEL BUTTONS: -->
+        <div class='JeelizVTOWidgetControls' id='JeelizVTOWidgetChangeModelContainer'>
+          <button onclick="JEELIZVTOWIDGET.load('rayban_aviator_or_vertFlash')">Model 1</button>
+          <button onclick="JEELIZVTOWIDGET.load('rayban_round_cuivre_pinkBrownDegrade')">Model 2</button>
+          <button onclick="JEELIZVTOWIDGET.load_modelStandalone('glasses3D/glasses1.json')">Model 3</button>
+          <button onclick="load_modelBySKU()">by SKU</button>
+        </div>
 
-              <!-- BEGIN ADJUST NOTICE -->
-              <div id='JeelizVTOWidgetAdjustNotice'>
-                  Move the glasses to adjust them.
-                  <button class='JeelizVTOWidgetBottomButton' id='JeelizVTOWidgetAdjustExit'>Quit</button>
-              </div>
-              <!-- END AJUST NOTICE -->
-              <!-- BEGIN LOADING WIDGET (not model) -->
-              <div id='JeelizVTOWidgetLoading'>
-                  <div class='JeelizVTOWidgetLoadingText'>
-                      LOADING...
-                  </div>
-              </div>
-              <!-- END LOADING -->
+        <!-- BEGIN ADJUST NOTICE -->
+        <div id='JeelizVTOWidgetAdjustNotice'>
+          Move the glasses to adjust them.
+          <button class='JeelizVTOWidgetBottomButton' id='JeelizVTOWidgetAdjustExit'>Quit</button>
+        </div>
+        <!-- END AJUST NOTICE -->
 
-          </div>
+        <!-- BEGIN LOADING WIDGET (not model) -->
+        <div id='JeelizVTOWidgetLoading'>
+           <div class='JeelizVTOWidgetLoadingText'>
+              LOADING...
+            </div>
+        </div>
+        <!-- END LOADING -->
+
       </div>
+    </div>
   </body>
 </html>
  
