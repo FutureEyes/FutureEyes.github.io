@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 
     <!-- INCLUDE MAIN SCRIPT: -->
-    <script src='release/JeelizNNCwidget.js'></script>
-
+    <!--<script src='release/JeelizNNCwidget.js'></script>-->
+    <script src='dist/JeelizVTOWidget.js'></script>
     <!-- For icons adjust fame or resize canvas -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
@@ -19,8 +19,7 @@
     <!-- main stylesheet: -->
     <link rel='stylesheet' href='css/JeeWidget.css' />
 
-    <script>
-        const glassesSkus = [
+    <script>const glassesSkus = [
             "glasses3D/glasses3-fix-v2.json",
             "glasses3D/glasses6-fix-v1.json",
             "glasses3D/glasses4-fix-v5.json",
@@ -126,8 +125,7 @@
                 const button = document.getElementById("buttonSeePrice");
                 button.setAttribute("href", productURLs[index]);
             }
-        }
-    </script>
+        }</script>
 </head>
 <body onload="main()">
     <div class='content'>
