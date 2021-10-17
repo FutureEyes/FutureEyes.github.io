@@ -20,6 +20,22 @@
     <link rel='stylesheet' href='css/JeelizVTOWidget.css' />
 
     <script>
+        const glassesSkus = [
+            "glasses3D/glasses3-fix-v2.json",
+            "glasses3D/glasses6-fix-v1.json",
+            "glasses3D/glasses4-fix-v5.json",
+            "glasses3D/glasses5-fix-v8.json"
+        ];
+        const productURLs = [
+            //glass 03
+            "https://www.carolinalemke.co.il/841313120906",
+            //glass06
+            "https://www.carolinalemke.co.il/9900000046477",
+            //glass 05
+            "https://www.carolinalemke.co.il/841313126274",
+            //glass 04
+            "https://www.carolinalemke.co.il/cl1647-06",
+        ];
       let _isResized = false;
       function test_resizeCanvas() {
         // halves the height:
@@ -75,15 +91,37 @@
             }) // end JEEWIDGET.start call
       } // end main()
 
+      function loadModel(clicked_id) {
+            switch (clicked_id) {
+                case 1:
+                    // And load the model
 
-      function load_modelBySKU(){
-        const sku = prompt('Please enter a glasses model SKU:', 'rayban_wayfarer_havane_marron');
-        if (sku){
-          JEELIZVTOWIDGET.load(sku);
-        }
-      }
+                    JEEWIDGET.load_modelStandalone(glassesSkus[0]);
+                    setURLButtonSeePrice(0);
+                    break;
+                case 2:
 
-    </script>
+                    JEEWIDGET.load_modelStandalone(glassesSkus[1]);
+                    setURLButtonSeePrice(1);
+                    break;
+                case 3:
+
+                    JEEWIDGET.load_modelStandalone(glassesSkus[2]);
+                    setURLButtonSeePrice(2);
+                    break;
+                case 4:
+
+                    JEEWIDGET.load_modelStandalone(glassesSkus[3]);
+                    setURLButtonSeePrice(3);
+                    break;
+                default:
+                    return;
+            }
+            function setURLButtonSeePrice(index) {
+                const button = document.getElementById("buttonSeePrice");
+                button.setAttribute("href", productURLs[index]);
+            }
+        }</script>
   </head>
 
   <body onload="main()">
