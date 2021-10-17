@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Glazz Try On</title>
-
+  <head>
+    <title>JEELIZ VTO WIDGET INTEGRATION DEMO</title>
     <meta charset='utf-8' />
 
     <!-- Forbid resize on pinch with IOS Safari: -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    
     <!-- INCLUDE MAIN SCRIPT: -->
     <script src='dist/JeelizVTOWidget.js'></script>
 
@@ -16,201 +15,161 @@
 
     <!-- Font for the header only: -->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
-
+    
     <!-- main stylesheet: -->
-    <!--<link rel='stylesheet' href='css/JeelizVTOWidget.css' />-->
+    <link rel='stylesheet' href='css/JeelizVTOWidget.css' />
 
-    <!-- main stylesheet: -->
-    <link rel='stylesheet' href='css/JeeWidget.css' />
+    <script>
+      let _isResized = false;
+      function test_resizeCanvas() {
+        // halves the height:
+        let halfHeightPx = Math.round(window.innerHeight / 2).toString() + 'px';
+        
+        const domWidget = document.getElementById('JeelizVTOWidget');
+        domWidget.style.maxHeight = (_isResized) ? 'none' : halfHeightPx;
 
-    <script>const glassesSkus = [
-            "glasses3D/glasses3-fix-v2.json",
-            "glasses3D/glasses6-fix-v1.json",
-            "glasses3D/glasses4-fix-v5.json",
-            "glasses3D/glasses5-fix-v8.json"
-        ];
-        const productURLs = [
-            //glass 03
-            "https://www.carolinalemke.co.il/841313120906",
-            //glass06
-            "https://www.carolinalemke.co.il/9900000046477",
-            //glass 05
-            "https://www.carolinalemke.co.il/841313126274",
-            //glass 04
-            "https://www.carolinalemke.co.il/cl1647-06",
-        ];
-        let _isResized = false;
-        function test_resizeCanvas() {
-            // halves the height:
-            let halfHeightPx = Math.round(window.innerHeight / 2).toString() + 'px';
+        _isResized = !_isResized;
+      }
 
-            const domWidget = document.getElementById('JeeWidget');
-            domWidget.style.maxHeight = (_isResized) ? 'none' : halfHeightPx;
 
-            _isResized = !_isResized;
+      // entry point:
+      function main() {
+        JEELIZVTOWIDGET.start({
+          sku: 'rayban_aviator_or_vertFlash',
+          searchImageMask: 'https://appstatic.jeeliz.com/jeewidget/images/target.png',
+          searchImageColor: 0xeeeeee,
+          callbackReady: function(){
+            console.log('INFO: JEELIZVTOWIDGET is ready :)');
+          },
+          onError: function(errorLabel){ // this function catches errors, so you can display custom integrated messages
+            alert('An error happened. errorLabel =' + errorLabel)
+            switch(errorLabel) {
+              case 'WEBCAM_UNAVAILABLE':
+                // the user has no camera, or does not want to share it.
+                break;
+          
+              case 'NOFILE':
+                // the user send an image, but it is not here
+                break;
+
+              case 'WRONGFILEFORMAT':
+                // the user upload a file which is not an image or corrupted
+                break;
+
+              case 'INVALID_SKU':
+                // the provided SKU does not match with a glasses model
+                break;
+
+              case 'FALLBACK_UNAVAILABLE':
+                // we cannot switch to file upload mode. browser too old?
+                break;
+
+              case 'PLACEHOLDER_NULL_WIDTH':
+              case 'PLACEHOLDER_NULL_HEIGHT':
+                // Something is wrong with the placeholder
+                // (element whose id='JeelizVTOWidget')
+                break;
+                
+              case 'FATAL':
+              default:
+                // a bit error happens:(
+                break;
+            } // end switch
+          } // end onError()
+        }) // end JEELIZVTOWIDGET.start call
+      } // end main()
+
+
+      function load_modelBySKU(){
+        const sku = prompt('Please enter a glasses model SKU:', 'rayban_wayfarer_havane_marron');
+        if (sku){
+          JEELIZVTOWIDGET.load(sku);
         }
-        function main() {
-            init();
-        }
-        // entry point:
-        function init() {
+      }
 
-            JEEWIDGET.start({
-                sku: '',
-                searchImageMask: 'https://https://github.com/FutureEyes/FutureEyes.github.io/blob/main/rayban.png',
-                searchImageColor: 0x4a8aa4,
-                callbackReady: function () {
-                    console.log('INFO: glazz is ready :)');
-                },
-                onError: function (errorLabel) { // this function catches errors, so you can display custom integrated messages
-                    alert('An error happened. errorLabel =' + errorLabel)
-                    switch (errorLabel) {
-                        case 'NOFILE':
-                            // the user send an image, but it is not here
-                            break;
+    </script>
+  </head>
 
-                        case 'WRONGFILEFORMAT':
-                            // the user upload a file which is not an image or corrupted
-                            break;
-
-                        case 'INVALID_SKU':
-                            // the provided SKU does not match with a glasses model
-                            break;
-
-                        case 'FALLBACK_UNAVAILABLE':
-                            // we cannot switch to file upload mode. browser too old?
-                            break;
-
-                        case 'PLACEHOLDER_NULL_WIDTH':
-                        case 'PLACEHOLDER_NULL_HEIGHT':
-                            // Something is wrong with the placeholder
-                            // (element whose id='JeeWidget')
-                            break;
-
-                        case 'FATAL':
-                        default:
-                            // a bit error happens:(
-                            break;
-                    } // end switch
-                } // end onError()
-            }) // end JEEWIDGET.start call
-        } // end main()
-        function setDefaultModel() {
-            JEEWIDGET.load_modelStandalone(glassesSkus[1]);
-            setURLButtonSeePrice(1);
-        }
-        function loadModel(clicked_id) {
-            switch (clicked_id) {
-                case 1:
-                    // And load the model
-
-                    JEEWIDGET.load_modelStandalone(glassesSkus[0]);
-                    setURLButtonSeePrice(0);
-                    break;
-                case 2:
-
-                    JEEWIDGET.load_modelStandalone(glassesSkus[1]);
-                    setURLButtonSeePrice(1);
-                    break;
-                case 3:
-
-                    JEEWIDGET.load_modelStandalone(glassesSkus[2]);
-                    setURLButtonSeePrice(2);
-                    break;
-                case 4:
-
-                    JEEWIDGET.load_modelStandalone(glassesSkus[3]);
-                    setURLButtonSeePrice(3);
-                    break;
-                default:
-                    return;
-            }
-            function setURLButtonSeePrice(index) {
-                const button = document.getElementById("buttonSeePrice");
-                button.setAttribute("href", productURLs[index]);
-            }
-        }</script>
-</head>
-<body onload="main()">
-    <div class='content'>
+  <body onload="main()">
+      <div class='content'>
 
 
-        <div class='header'>
-            <div class="headerTitle">
-                Try on virtual glazz
-            </div>
-        </div>
+          <div class='header'>
+              <div class="headerTitle">
+                  Try on virtual glazz
+              </div>
+          </div>
 
 
-        <!-- Please keep the same element IDs so that JEEWIDGET can extract them from the DOM -->
-        <!-- BEGIN JEEWIDGET -->
-        <!--
+          <!-- Please keep the same element IDs so that JEEWIDGET can extract them from the DOM -->
+          <!-- BEGIN JEEWIDGET -->
+          <!--
           div with id='JeeWidget' is the placeholder
           you need to size and position it according to where the VTO widget should be
           if you resize it, the widget will be automatically resized
         -->
-        <div id='JeeWidget'>
-            <!-- MAIN CANVAS: -->
-            <!--
+          <div id='JeeWidget'>
+              <!-- MAIN CANVAS: -->
+              <!--
              canvas with id='JeeWidgetCanvas' is the canvas where the VTO widget will be rendered
              it should have CSS attribute position: absolute so that it can be resized without
              changing the total size of the placeholder
             -->
-            <canvas id='JeeWidgetCanvas'></canvas>
-            <div class='JeeWidgetControls JeeWidgetControlsTop'>
+              <canvas id='JeeWidgetCanvas'></canvas>
+              <div class='JeeWidgetControls JeeWidgetControlsTop'>
 
-                <!--<div class='JeeWidgetControls JeeWidgetControlsTop' style="display: none;">-->
-                <!-- ADJUST BUTTON: -->
-                <button id='JeeWidgetAdjust'>
-                    <div class="buttonIcon"><i class="fas fa-arrows-alt"></i></div>Adjust
-                </button>
-                <!-- RESIZE WIDGET BUTTON: -->
-                <!--<button id='buttonResizeCanvas' onclick='test_resizeCanvas();'>
+                  <!--<div class='JeeWidgetControls JeeWidgetControlsTop' style="display: none;">-->
+                  <!-- ADJUST BUTTON: -->
+                  <button id='JeeWidgetAdjust'>
+                      <div class="buttonIcon"><i class="fas fa-arrows-alt"></i></div>Adjust
+                  </button>
+                  <!-- RESIZE WIDGET BUTTON: -->
+                  <!--<button id='buttonResizeCanvas' onclick='test_resizeCanvas();'>
                     <div class="buttonIcon"><i class="fas fa-sync-alt"></i></div>Resize widget
                 </button>-->
-                <a id="buttonSeePrice"
-                   target="_blank"
-                   href="https://www.carolinalemke.co.il/ id='buttonSeePrice">
-                    <div class="buttonIcon"><i class="fa fa-tags"></i></div>More
-                </a>
+                  <a id="buttonSeePrice"
+                     target="_blank"
+                     href="https://www.carolinalemke.co.il/ id='buttonSeePrice">
+                      <div class="buttonIcon"><i class="fa fa-tags"></i></div>More
+                  </a>
 
 
-            </div>
-            <!-- CHANGE MODEL BUTTONS: -->
-            <div class='JeeWidgetControls' id='JeeWidgetChangeModelContainer'>
-                <button id="1" onClick="loadModel(1)">
-                    <img src="./images/glasses3.png" />
-                </button>
-                <button id="2" onClick="loadModel(2)">
-                    <img src="./images/glasses6.png" />
-                </button>
-                <button id="2" onClick="loadModel(3)">
-                    <img src="./images/glasses4.png" />
-                </button>
-                <button id="2" onClick="loadModel(4)">
-                    <img src="./images/glasses5.png" />
-                </button>
-                <!-- <button onclick="JEEWIDGET.load_modelStandalone('glasses3D/glasses-SF-test.json')"><img src="./images/model2.png"></button>
+              </div>
+              <!-- CHANGE MODEL BUTTONS: -->
+              <div class='JeeWidgetControls' id='JeeWidgetChangeModelContainer'>
+                  <button id="1" onClick="loadModel(1)">
+                      <img src="./images/glasses3.png" />
+                  </button>
+                  <button id="2" onClick="loadModel(2)">
+                      <img src="./images/glasses6.png" />
+                  </button>
+                  <button id="2" onClick="loadModel(3)">
+                      <img src="./images/glasses4.png" />
+                  </button>
+                  <button id="2" onClick="loadModel(4)">
+                      <img src="./images/glasses5.png" />
+                  </button>
+                  <!-- <button onclick="JEEWIDGET.load_modelStandalone('glasses3D/glasses-SF-test.json')"><img src="./images/model2.png"></button>
                 <button onclick="JEEWIDGET.load_modelStandalone('glasses3D/glassOmer.json')"><img src="./images/model1.png"></button>
                 <!--<button onclick="JEEWIDGET.load('rayban_erika_havaneGun_marronDegrade')"><img src="./images/model3.png"></button>
 
                 <button onclick="JEEWIDGET.load_modelStandalone('glasses3D/glass2Updated.json')"><img src="./images/model3.png"></button>-->
-            </div>
-            <!-- BEGIN ADJUST NOTICE -->
-            <div id='JeeWidgetAdjustNotice'>
-                Move the glasses to adjust them.
-                <button class='JeeWidgetBottomButton' id='JeeWidgetAdjustExit'>Quit</button>
-            </div>
-            <!-- END AJUST NOTICE -->
-            <!-- BEGIN LOADING WIDGET (not model) -->
-            <div id='JeeWidgetLoading'>
-                <div class='JeeWidgetLoadingText'>
-                    LOADING...
-                </div>
-            </div>
-            <!-- END LOADING -->
-        </div>
-    </div>
-</body>
+              </div>
+              <!-- BEGIN ADJUST NOTICE -->
+              <div id='JeeWidgetAdjustNotice'>
+                  Move the glasses to adjust them.
+                  <button class='JeeWidgetBottomButton' id='JeeWidgetAdjustExit'>Quit</button>
+              </div>
+              <!-- END AJUST NOTICE -->
+              <!-- BEGIN LOADING WIDGET (not model) -->
+              <div id='JeeWidgetLoading'>
+                  <div class='JeeWidgetLoadingText'>
+                      LOADING...
+                  </div>
+              </div>
+              <!-- END LOADING -->
+          </div>
+      </div>
+  </body>
 </html>
  
