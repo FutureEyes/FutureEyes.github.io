@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>JEELIZ VTO WIDGET INTEGRATION DEMO</title>
+    <title>AR Try On</title>
     <meta charset='utf-8' />
 
     <!-- Forbid resize on pinch with IOS Safari: -->
@@ -60,6 +60,10 @@
             onError: function (errorLabel) { // this function catches errors, so you can display custom integrated messages
                 alert('An error happened. errorLabel =' + errorLabel)
                 switch (errorLabel) {
+                    case 'WEBCAM_UNAVAILABLE':
+                        // the user has no camera, or does not want to share it.
+                        break;
+
                     case 'NOFILE':
                         // the user send an image, but it is not here
                         break;
@@ -79,7 +83,7 @@
                     case 'PLACEHOLDER_NULL_WIDTH':
                     case 'PLACEHOLDER_NULL_HEIGHT':
                         // Something is wrong with the placeholder
-                        // (element whose id='JeeWidget')
+                        // (element whose id='JeelizVTOWidget')
                         break;
 
                     case 'FATAL':
@@ -88,8 +92,9 @@
                         break;
                 } // end switch
             } // end onError()
-        }) // end JEEWIDGET.start call
-      } // end main()
+        }) // end JEELIZVTOWIDGET.start call
+        } // end main()
+
 
 
       function load_modelBySKU(){
@@ -104,22 +109,22 @@
                     // And load the model
 
                     JEEWIDGET.load_modelStandalone(glassesSkus[0]);
-                    setURLButtonSeePrice(0);
+                   // setURLButtonSeePrice(0);
                     break;
                 case 2:
 
                     JEEWIDGET.load_modelStandalone(glassesSkus[1]);
-                    setURLButtonSeePrice(1);
+                    //setURLButtonSeePrice(1);
                     break;
                 case 3:
 
                     JEEWIDGET.load_modelStandalone(glassesSkus[2]);
-                    setURLButtonSeePrice(2);
+                    //setURLButtonSeePrice(2);
                     break;
                 case 4:
 
                     JEEWIDGET.load_modelStandalone(glassesSkus[3]);
-                    setURLButtonSeePrice(3);
+                   // setURLButtonSeePrice(3);
                     break;
                 default:
                     return;
@@ -168,7 +173,7 @@
           </div>
 
           <!-- CHANGE MODEL BUTTONS: -->
-          <div class='JeeWidgetControls' id='JeeWidgetChangeModelContainer'>
+          <div class='JeelizVTOWidgetControls' id='JeelizVTOWidgetChangeModelContainer'>
               <button id="1" onClick="loadModel(1)">
                   <img src="./images/glasses3.png" />
               </button>
