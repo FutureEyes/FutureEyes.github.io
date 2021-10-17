@@ -152,25 +152,25 @@
         if you resize it, the widget will be automatically resized
       -->
       <div id='JeelizVTOWidget'>
-          <!-- MAIN CANVAS: -->
-          <!--
-     canvas with id='JeelizVTOWidgetCanvas' is the canvas where the VTO widget will be rendered
-     it should have CSS attribute position: absolute so that it can be resized without
-     changing the total size of the placeholder
-    -->
-          <canvas id='JeelizVTOWidgetCanvas'></canvas>
+        <!-- MAIN CANVAS: -->
+        <!-- 
+         canvas with id='JeelizVTOWidgetCanvas' is the canvas where the VTO widget will be rendered
+         it should have CSS attribute position: absolute so that it can be resized without
+         changing the total size of the placeholder
+        -->
+        <canvas id='JeelizVTOWidgetCanvas'></canvas>
+        
+        <div class='JeelizVTOWidgetControls JeelizVTOWidgetControlsTop'>
+          <!-- ADJUST BUTTON: -->
+          <button id='JeelizVTOWidgetAdjust'>
+            <div class="buttonIcon"><i class="fas fa-arrows-alt"></i></div>Adjust
+          </button>
 
-          <div class='JeelizVTOWidgetControls JeelizVTOWidgetControlsTop'>
-              <!-- ADJUST BUTTON: -->
-              <button id='JeelizVTOWidgetAdjust'>
-                  <div class="buttonIcon"><i class="fas fa-arrows-alt"></i></div>Adjust
-              </button>
-
-              <!-- RESIZE WIDGET BUTTON: -->
-              <button id='buttonResizeCanvas' onclick='test_resizeCanvas();'>
-                  <div class="buttonIcon"><i class="fas fa-sync-alt"></i></div>Resize widget
-              </button>
-          </div>
+          <!-- RESIZE WIDGET BUTTON: -->
+          <button id='buttonResizeCanvas' onclick='test_resizeCanvas();'>
+            <div class="buttonIcon"><i class="fas fa-sync-alt"></i></div>Resize widget
+          </button>
+        </div>
 
           <!-- CHANGE MODEL BUTTONS: -->
           <div class='JeelizVTOWidgetControls' id='JeelizVTOWidgetChangeModelContainer'>
