@@ -152,3 +152,8 @@ button:hover {
 #buttonResizeCanvas {
   display: none;
 }
+#buttonSeePrice {
+  display: inline-block;
+  width: 45%;
+  min-width: auto;
+}
