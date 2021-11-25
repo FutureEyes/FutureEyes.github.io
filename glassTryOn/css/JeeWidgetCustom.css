@@ -102,6 +102,7 @@ button:hover {
 }
  #JeeWidgetChangeModelContainer > button {
         bottom: 16px;
+        border-radius: 8px;
         width: 20%;
         min-width: auto;
  }
