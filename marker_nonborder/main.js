@@ -30,12 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const clock = new THREE.Clock();
 
     await mindarThree.start();
-    renderer.setAnimationLoop(() => {
-      const delta = clock.getDelta();
-      gltf.scene.rotation.set(0, gltf.scene.rotation.y+delta, 0);
-      mixer.update(delta);
-      renderer.render(scene, camera);
-    });
+    // renderer.setAnimationLoop(() => {
+    //   const delta = clock.getDelta();
+    //   gltf.scene.rotation.set(0, gltf.scene.rotation.y+delta, 0);
+    //   mixer.update(delta);
+    //   renderer.render(scene, camera);
+    //});
   }
   start();
 });
