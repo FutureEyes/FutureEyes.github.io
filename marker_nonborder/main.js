@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const light = new THREE.HemisphereLight( 0xffffff, 0xbbbbff, 1 );
     scene.add(light);
 
-    const gltf = await loadGLTF('asset/asset.gltf');
+    const gltf = await loadGLTF('asset/TRIIPBOX.gltf');
     gltf.scene.scale.set(0.15, 0.15, 0.15);
     gltf.scene.rotation.set(0,90,0) ;
     gltf.scene.position.set(0, -0.4, 0);
@@ -29,8 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const clock = new THREE.Clock();
 
-    const anchor = mindarThree.addAnchor(0);
-    anchor.group.add(raccoon.scene);
+    
 
     anchor.onTargetFound = () => {
       console.log("on marker found");
