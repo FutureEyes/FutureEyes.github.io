@@ -28,15 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     action.play();
 
     const clock = new THREE.Clock();
-
-    
-
-    anchor.onTargetFound = () => {
-      console.log("on marker found");
-    }
-    anchor.onTargetLost = () => {
-      console.log("on marker lost");
-    }
     await mindarThree.start();
     renderer.setAnimationLoop(() => {
       const delta = clock.getDelta();
