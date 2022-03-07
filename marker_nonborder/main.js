@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const mindarThree = new window.MINDAR.IMAGE.MindARThree({
       container: document.body,
       imageTargetSrc: './asset/target/triip.mind',
+      uiScanning: "#scanning",
+      uiLoading: "no",
     });
     const {renderer, scene, camera} = mindarThree;
 
@@ -17,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gltf.scene.position.set(0, -0.4, 0);
     gltf.scene.rotation.set(0,90,0);
 
+    
     const anchor = mindarThree.addAnchor(0);
     anchor.group.add(gltf.scene);
 
