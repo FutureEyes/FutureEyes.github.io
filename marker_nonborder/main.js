@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const gltf = await loadGLTF('asset/asset.gltf');
     gltf.scene.scale.set(0.15, 0.15, 0.15);
+    gltf.scene.rotation.set(0,90,0) ;
     gltf.scene.position.set(0, -0.4, 0);
-    gltf.scene.rotation.set(0,90,0);
 
     
     const anchor = mindarThree.addAnchor(0);
@@ -29,13 +29,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const clock = new THREE.Clock();
 
+    const anchor = mindarThree.addAnchor(0);
+    anchor.group.add(raccoon.scene);
+
+    anchor.onTargetFound = () => {
+      console.log("on marker found");
+    }
+    anchor.onTargetLost = () => {
+      console.log("on marker lost");
+    }
     await mindarThree.start();
-    // renderer.setAnimationLoop(() => {
-    //   const delta = clock.getDelta();
-    //   gltf.scene.rotation.set(0, gltf.scene.rotation.y+delta, 0);
-    //   mixer.update(delta);
-    //   renderer.render(scene, camera);
-    //});
+    renderer.setAnimationLoop(() => {
+      const delta = clock.getDelta();
+      gltf.scene.rotation.set(0, gltf.scene.rotation.y+delta, 0);
+      mixer.update(delta);
+      renderer.render(scene, camera);
+    });
   }
   start();
 });
