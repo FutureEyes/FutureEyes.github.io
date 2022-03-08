@@ -18,10 +18,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const gltf = await loadGLTF('asset/box.gltf');
     gltf.scene.scale.set(1.04, 1.04, 1.04);
     gltf.scene.position.set(0, -0.4, 0);
-    gltf.scene.rotation.set(0,Math.PI/2,0);
+    gltf.scene.rotation.set(0,Math.PI/2,Math.PI/2);
     
     const anchor = mindarThree.addAnchor(0);
     anchor.group.add(gltf.scene);
+    anchor.onTargetFound = () => {
+      console.log("on target found");
+    }
+    anchor.onTargetLost = () => {
+      console.log("on target lost");
+    }
 
     const mixer = new THREE.AnimationMixer(gltf.scene);
     const action = mixer.clipAction(gltf.animations[0]);
