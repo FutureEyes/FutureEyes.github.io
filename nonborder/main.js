@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const light = new THREE.HemisphereLight( 0xffffff, 0xbbbbff, 1 );
     scene.add(light);
-    const mixer = new THREE.AnimationMixer(gltf.scene);
     
 
     const gltf = await loadGLTF('asset/box.gltf');
@@ -31,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     anchor.onTargetLost = () => {
       console.log("on target lost");
     }
+    const mixer = new THREE.AnimationMixer(gltf.scene);
     const action = mixer.clipAction(gltf.animations[0]);
     action.play();
    
