@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const light = new THREE.HemisphereLight( 0xffffff, 0xbbbbff, 1 );
     scene.add(light);
 
-    const raccoon = await loadGLTF('./asset/model/musicband-raccoon/scene.gltf');
+    const raccoon = await loadGLTF('./asset/models/musicband-raccoon/scene.gltf');
     raccoon.scene.scale.set(0.1, 0.1, 0.1);
     raccoon.scene.position.set(0, -0.4, 0);
     raccoon.scene.rotation.set(0,Math.PI/2,0);
