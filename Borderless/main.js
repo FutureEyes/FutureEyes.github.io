@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
     scene.add(light);
     const mixer = new THREE.AnimationMixer(gltf.scene);
     const action = mixer.clipAction(gltf.animations[0]);
+    action.play();
+
     const gltf = await loadGLTF('asset/box.gltf');
     gltf.scene.scale.set(1.04, 1.04, 1.04);
     gltf.scene.position.set(0, -0.4, 0);
@@ -24,11 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
     anchor.group.add(gltf.scene);
     anchor.onTargetFound = () => {
       console.log("on target found");
-      action.play();
     }
     anchor.onTargetLost = () => {
       console.log("on target lost");
-      action.pause();
     }
 
    
