@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const gltf = await loadGLTF('asset/box.gltf');
     gltf.scene.scale.set(1.04, 1.04, 1.04);
     gltf.scene.position.set(0, -0.4, 0);
-    const action = mixer.clipAction(gltf.animations[0]);
-    action.play();
+
+   
     
     const anchor = mindarThree.addAnchor(0);
     anchor.group.add(gltf.scene);
@@ -31,7 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
     anchor.onTargetLost = () => {
       console.log("on target lost");
     }
-
+    const action = mixer.clipAction(gltf.animations[0]);
+    action.play();
    
     //action.play();
 
