@@ -24,14 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
     anchor.group.add(gltf.scene);
     anchor.onTargetFound = () => {
       console.log("on target found");
+      action.play();
     }
     anchor.onTargetLost = () => {
       console.log("on target lost");
+      action.pause();
     }
 
     const mixer = new THREE.AnimationMixer(gltf.scene);
     const action = mixer.clipAction(gltf.animations[0]);
-    action.play();
+    //action.play();
 
     const clock = new THREE.Clock();
     await mindarThree.start();
