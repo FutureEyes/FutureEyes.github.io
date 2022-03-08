@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const gltf = await loadGLTF('asset/box.gltf');
     gltf.scene.scale.set(1.04, 1.04, 1.04);
     gltf.scene.position.set(0, -0.4, 0);
-    gltf.scene.rotation.set(0,0,Math.PI/2);
+    gltf.scene.rotation.set(Math.PI/2,0,0);
     
     const anchor = mindarThree.addAnchor(0);
     anchor.group.add(gltf.scene);
