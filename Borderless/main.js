@@ -15,12 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const light = new THREE.HemisphereLight( 0xffffff, 0xbbbbff, 1 );
     scene.add(light);
     const mixer = new THREE.AnimationMixer(gltf.scene);
-    const action = mixer.clipAction(gltf.animations[0]);
-    action.play();
+    
 
     const gltf = await loadGLTF('asset/box.gltf');
     gltf.scene.scale.set(1.04, 1.04, 1.04);
     gltf.scene.position.set(0, -0.4, 0);
+    const action = mixer.clipAction(gltf.animations[0]);
+    action.play();
     
     const anchor = mindarThree.addAnchor(0);
     anchor.group.add(gltf.scene);
