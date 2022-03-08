@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const light = new THREE.HemisphereLight( 0xffffff, 0xbbbbff, 1 );
     scene.add(light);
-
+    const mixer = new THREE.AnimationMixer(gltf.scene);
+    const action = mixer.clipAction(gltf.animations[0]);
     const gltf = await loadGLTF('asset/box.gltf');
     gltf.scene.scale.set(1.04, 1.04, 1.04);
     gltf.scene.position.set(0, -0.4, 0);
@@ -30,8 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
       action.pause();
     }
 
-    const mixer = new THREE.AnimationMixer(gltf.scene);
-    const action = mixer.clipAction(gltf.animations[0]);
+   
     //action.play();
 
     const clock = new THREE.Clock();
