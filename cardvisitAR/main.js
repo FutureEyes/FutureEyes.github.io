@@ -1,5 +1,5 @@
-import {loadGLTF, loadVideo} from "../../libs/loader.js";
-import {mockWithVideo} from '../../libs/camera-mock';
+import {loadGLTF, loadVideo} from "./libs/loader.js";
+import {mockWithVideo} from './libs/camera-mock';
 const THREE = window.MINDAR.IMAGE.THREE;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const mindarThree = new window.MINDAR.IMAGE.MindARThree({
       container: document.body,
-      imageTargetSrc: './assets/targets/course-banner.mind',
+      imageTargetSrc: './asset/targets/FES.mind',
     });
     const {renderer, scene, camera} = mindarThree;
 
