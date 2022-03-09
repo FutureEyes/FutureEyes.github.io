@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const start = async() => {
     const mindarThree = new window.MINDAR.IMAGE.MindARThree({
       container: document.body,
-      imageTargetSrc: './asset/targets/FElogo.mind',
+      imageTargetSrc: './asset/targets/targets (1).mind',
     });
     const {renderer, scene, camera} = mindarThree;
 
@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const robot = await loadGLTF('./asset/models/robot/RobotExpressive.glb');
     robot.scene.scale.set(0.2, 0.2, 0.2);
     robot.scene.position.set(0, -0.2, 0);
+    robot.scene.rotation.set(0,Math.PI/2,0);
 
     const anchor = mindarThree.addAnchor(0);
     anchor.group.add(robot.scene);
