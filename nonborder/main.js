@@ -22,12 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const light = new THREE.HemisphereLight( 0xffffff, 0xbbbbff, 1 );
     scene.add(light);
     
-    renderer = new THREE.WebGLRenderer();
-    renderer.toneMapping = THREE.ReinhardToneMapping;
-    renderer.toneMappingExposure = 2.3;
-    renderer.setSize(window.innerWidth,window.innerHeight);
-    renderer.shadowMap.enabled = true;
-    document.body.appendChild(renderer.domElement);
+  
 
 
     const gltf = await loadGLTF('asset/asset.gltf');
