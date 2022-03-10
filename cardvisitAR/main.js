@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const {renderer, scene, camera} = mindarThree;
 
-    const video = await loadVideo("./assets/videos/decutung.mp4");
+    const video = await loadVideo("./asset/videos/decutung.mp4");
     video.play();
     video.pause();
     const texture = new THREE.VideoTexture(video);
