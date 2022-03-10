@@ -12,9 +12,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const {renderer, scene, camera} = mindarThree;
 
+   const spotlight = new THREE.SpotLight(0xffa95c,4);
+   spotlight.position.set(-50,50,50);
+   spotlight.castShadow = true;
+   spotlight.shadow.bias = -0.0001;
+   spotlight.shadow.mapSize.width = 1024*4;
+   spotlight.shadow.mapSize.height = 1024*4;
+    scene.add( spotlight );
     const light = new THREE.HemisphereLight( 0xffffff, 0xbbbbff, 1 );
     scene.add(light);
     
+    renderer = new THREE.WebGLRenderer();
+    renderer.toneMapping = THREE.ReinhardToneMapping;
+    renderer.toneMappingExposure = 2.3;
+    renderer.setSize(window.innerWidth,window.innerHeight);
+    renderer.shadowMap.enabled = true;
+    document.body.appendChild(renderer.domElement);
+
 
     const gltf = await loadGLTF('asset/asset.gltf');
     gltf.scene.scale.set(1.04, 1.04, 1.04);
