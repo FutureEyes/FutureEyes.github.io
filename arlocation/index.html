@@ -21,7 +21,8 @@
                     id="animated-asset"
                     src="assets/asset.gltf"
                 ></a-asset-item>
-                
+                <img id="reflection" src="https://raw.githubusercontent.com/mrdoob/three.js/r82/examples/textures/2294472375_24a3b8ef46_o.jpg">
+                <img id="sky" src="https://raw.githubusercontent.com/mrdoob/three.js/r82/examples/textures/2294472375_24a3b8ef46_o.jpg">
             </a-assets>
             <a-light id="dirlight" intensity="0.6" light="castShadow:true;type:directional" position="1 1 1"></a-light>
 
@@ -29,8 +30,13 @@
                     look-at="[gps-camera]"
                     animation-mixer="loop: repeat"
                     gltf-model="#animated-asset"
-                    light="type: ambient; intensity: 0.2;"
-                    reflection="directionalLight:a-light#dirlight;"
+                    light="type: ambient; intensity: 0.5;"
+                    light="type: directional;
+                                     castShadow: true;
+                                     intensity: 0.4;
+                                     shadowCameraVisible: true;"
+                              position="-5 3 1.5"
+
                               scale="1.2184615980777895 1.2184615980777895 1.2184615980777895"
                             gps-entity-place="latitude:10.80145366733753; longitude:106.70475971303551;"
 
@@ -41,8 +47,12 @@
                 look-at="[gps-camera]"
                 animation-mixer="loop: repeat"
                 gltf-model="#animated-asset"
-                light="type: ambient; intensity: 0.2;"
-                reflection="directionalLight:a-light#dirlight;"
+                light="type: ambient; intensity: 0.5;"
+                light="type: directional;
+                                 castShadow: true;
+                                 intensity: 0.4;
+                                 shadowCameraVisible: true;"
+                          position="-5 3 1.5"
 
                                      scale="1.2184615980777895 1.2184615980777895 1.2184615980777895"
                                     gps-entity-place="latitude:10.755488; longitude:106.709189;"
@@ -53,7 +63,12 @@
                 look-at="[gps-camera]"
                 animation-mixer="loop: repeat"
                 gltf-model="#animated-asset"
-                light="type: ambient; intensity: 0.2;"
+                light="type: ambient; intensity: 0.5;"
+                light="type: directional;
+                                 castShadow: true;
+                                 intensity: 0.4;
+                                 shadowCameraVisible: true;"
+                          position="-5 3 1.5"
                 reflection="directionalLight:a-light#dirlight;"
   
                                      scale="1.2184615980777895 1.2184615980777895 1.2184615980777895"
@@ -65,7 +80,12 @@
             look-at="[gps-camera]"
             animation-mixer="loop: repeat"
             gltf-model="#animated-asset"
-            light="type: ambient; intensity: 0.2;"
+            light="type: ambient; intensity: 0.5;"
+            light="type: directional;
+                             castShadow: true;
+                             intensity: 0.4;
+                             shadowCameraVisible: true;"
+                      position="-5 3 1.5"
             reflection="directionalLight:a-light#dirlight;"
 
                                      scale="1.2184615980777895 1.2184615980777895 1.2184615980777895"
@@ -79,7 +99,12 @@
     animation-mixer="loop: repeat"
     gltf-model="#animated-asset"
     reflection="directionalLight:a-light#dirlight;"
-    light="type: ambient; intensity: 0.2;"
+    light="type: ambient; intensity: 0.5;"
+    light="type: directional;
+                     castShadow: true;
+                     intensity: 0.4;
+                     shadowCameraVisible: true;"
+              position="-5 3 1.5"
                               scale="1.2184615980777895 1.2184615980777895 1.2184615980777895"
                                   gps-entity-place="latitude:10.70098968174121; longitude:106.7300813642215;"
 ></a-entity>
@@ -88,7 +113,12 @@
         look-at="[gps-camera]"
         animation-mixer="loop: repeat"
         gltf-model="#animated-asset"
-        light="type: ambient; intensity: 0.2;"
+        light="type: ambient; intensity: 0.5;"
+        light="type: directional;
+                         castShadow: true;
+                         intensity: 0.4;
+                         shadowCameraVisible: true;"
+                  position="-5 3 1.5"
         reflection="directionalLight:a-light#dirlight;"
 
                                      scale="1.2184615980777895 1.2184615980777895 1.2184615980777895"
