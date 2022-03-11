@@ -21,15 +21,19 @@
                     id="animated-asset"
                     src="assets/asset.gltf"
                 ></a-asset-item>
+                
             </a-assets>
 
                 <a-entity
                     look-at="[gps-camera]"
                     animation-mixer="loop: repeat"
                     gltf-model="#animated-asset"
-                    rotation="0 90 0"
-                    light="type: directional; color: #EEE; intensity: 1" position="-1 1 0"
-
+                    light="type: ambient; intensity: 0.5;"
+                    light="type: directional;
+                                     castShadow: true;
+                                     intensity: 0.4;
+                                     shadowCameraVisible: true;"
+                              position="-5 3 1.5"
                     scale="1.044395655495248 1.044395655495248 1.044395655495248"
                     gps-entity-place="latitude:10.80145366733753; longitude:106.70475971303551;"
 
@@ -40,8 +44,12 @@
                 look-at="[gps-camera]"
                 animation-mixer="loop: repeat"
                 gltf-model="#animated-asset"
-                rotation="0 90 0"
-                light="type: directional; color:#FFF; intensity: 1" position="-1 1 0"
+                light="type: ambient; intensity: 0.5;"
+                    light="type: directional;
+                                     castShadow: true;
+                                     intensity: 0.4;
+                                     shadowCameraVisible: true;"
+                              position="-5 3 1.5"
                 scale="1.044395655495248 1.044395655495248 1.044395655495248"
                 gps-entity-place="latitude:10.755488; longitude:106.709189;"
 
@@ -51,8 +59,12 @@
                 look-at="[gps-camera]"
                 animation-mixer="loop: repeat"
                 gltf-model="#animated-asset"
-                light="type: directional; color:#FFF; intensity: 1" position="-1 1 0"
-                rotation="0 90 0"
+                light="type: ambient; intensity: 0.5;"
+                    light="type: directional;
+                                     castShadow: true;
+                                     intensity: 0.4;
+                                     shadowCameraVisible: true;"
+                              position="-5 3 1.5"
                 scale="1.044395655495248 1.044395655495248 1.044395655495248"
                 gps-entity-place="latitude:16.067469; longitude:108.197031;"
 
@@ -62,8 +74,12 @@
             look-at="[gps-camera]"
             animation-mixer="loop: repeat"
             gltf-model="#animated-asset"
-            rotation="0 90 0"
-            light="type: directional; color: #FFF; intensity: 1" position="-1 1 0"
+            light="type: ambient; intensity: 0.5;"
+                    light="type: directional;
+                                     castShadow: true;
+                                     intensity: 0.4;
+                                     shadowCameraVisible: true;"
+                              position="-5 3 1.5"
             scale="1.044395655495248 1.044395655495248 1.044395655495248"
             gps-entity-place="latitude:39.89610; longitude:32.81643;"
 
@@ -75,7 +91,12 @@
     animation-mixer="loop: repeat"
     gltf-model="#animated-asset"
     rotation="0 90 0"
-    light="type: directional; color:  #FFF; intensity: 1" position="-1 1 0"
+    light="type: ambient; intensity: 0.5;"
+                    light="type: directional;
+                                     castShadow: true;
+                                     intensity: 0.4;
+                                     shadowCameraVisible: true;"
+                              position="-5 3 1.5"
     scale="1.044395655495248 1.044395655495248 1.044395655495248"
     gps-entity-place="latitude:10.70098968174121; longitude:106.7300813642215;"
 
@@ -85,8 +106,12 @@
         look-at="[gps-camera]"
         animation-mixer="loop: repeat"
         gltf-model="#animated-asset"
-        rotation="0 90 0"
-        light="type: directional; color:  #FFF; intensity: 1" position="-1 1 0"
+        light="type: ambient; intensity: 0.5;"
+                    light="type: directional;
+                                     castShadow: true;
+                                     intensity: 0.4;
+                                     shadowCameraVisible: true;"
+                              position="-5 3 1.5"
         scale="1.044395655495248 1.044395655495248 1.044395655495248"
         gps-entity-place="latitude:41.09667; longitude:28.88152;"
 
