@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
 
 
-    const gltf = await loadGLTF('asset/cayluoiho.glb');
+    const gltf = await loadGLTF('asset/asset.gltf');
     gltf.scene.scale.set(1.04, 1.04, 1.04);
     gltf.scene.position.set(0, -0.4, 0);
     gltf.scene.rotation.set(Math.PI/2,0,0);   
@@ -41,9 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const mixer = new THREE.AnimationMixer(gltf.scene);
     const action = mixer.clipAction(gltf.animations[0]);
     action.play();
-   
-    //action.play();
-
     const clock = new THREE.Clock();
     await mindarThree.start();
     renderer.setAnimationLoop(() => {

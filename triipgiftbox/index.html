@@ -24,6 +24,7 @@
                     src="assets/asset.gltf"
                 ></a-asset-item>
             </a-assets>
+            <a-light id="dirlight" intensity="0.6" light="castShadow:true;type:directional" position="1 1 1"></a-light>
 
             <a-marker
                 id="animated-marker"
@@ -40,7 +41,7 @@
                     light="type: ambient; intensity: 0.4;"
                     light="type: directional;
                                      castShadow: true;
-                                     intensity: 0.35;
+                                     intensity: 0.6;
                                      shadowCameraVisible: true;"
                     scale="1.392527540660331 1.392527540660331 1.392527540660331"
                     animation-mixer="loop: repeat"
