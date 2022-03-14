@@ -14,10 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
    const spotlight = new THREE.SpotLight(0xffa95c,4);
   //  spotlight.position.set(-50,50,50);
-  //  spotlight.castShadow = true;
-  //  spotlight.shadow.bias = -0.0001;
-  //  spotlight.shadow.mapSize.width = 1024*4;
-  //  spotlight.shadow.mapSize.height = 1024*4;
+   spotlight.castShadow = true;
+   spotlight.shadow.bias = -0.0001;
+   spotlight.shadow.mapSize.width = 1024*4;
+   spotlight.shadow.mapSize.height = 1024*4;
     scene.add( spotlight );
     const light = new THREE.HemisphereLight( 0xffffff, 0xbbbbff, 1 );
     scene.add(light);
