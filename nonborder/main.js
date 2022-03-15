@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const {renderer, scene, camera} = mindarThree;
 
-   const spotlight = new THREE.SpotLight(0xffa95c,4);
+   const spotlight = new THREE.SpotLight(0xffffff,4);
   spotlight.position.set(-50,50,50);
    spotlight.castShadow = true;
    spotlight.shadow.bias = -0.0001;
