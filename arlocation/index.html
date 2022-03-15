@@ -24,6 +24,10 @@
                 <img id="reflection" src="https://raw.githubusercontent.com/mrdoob/three.js/r82/examples/textures/2294472375_24a3b8ef46_o.jpg">
                 <img id="sky" src="https://raw.githubusercontent.com/mrdoob/three.js/r82/examples/textures/2294472375_24a3b8ef46_o.jpg">
             </a-assets>
+            <a-entity id="'ambientlight"  light="type: ambient; intensity: 0.4;"></a-entity>
+            
+            <a-light type="directional" position="0 0 0" rotation="-90 0 0" target="#directionaltarget">
+            <a-entity id="directionaltarget" position="0 0 -1"></a-entity>
             <a-light id="dirlight" intensity="0.6" light="castShadow:true;type:directional" position="1 1 1"></a-light>
 
                 <a-entity
