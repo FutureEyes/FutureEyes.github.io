@@ -36,22 +36,22 @@
                 cursor="fuse: false; rayOrigin: mouse;"
                 id="markerA"
             >
-         
+            <a-entity
+            id="bowser-model"
+            light="type: ambient; intensity: 0.4;"
+            light="type: directional;
+                             castShadow: true;
+                             intensity: 0.6;
+                             shadowCameraVisible: true;"
+            scale="1.392527540660331 1.392527540660331 1.392527540660331"
+            animation-mixer="loop: repeat"
+            gltf-model="#animated-asset"
+            
+        ></a-entity>
             </a-marker>
             <a-entity id="dlight" light="type: directionalLight; intensity: 2;" position="1 1 1"></a-entity>
-
-            <a-entity
-                id="bowser-model"
-                light="type: ambient; intensity: 0.4;"
-                light="type: directional;
-                                 castShadow: true;
-                                 intensity: 0.6;
-                                 shadowCameraVisible: true;"
-                scale="1.392527540660331 1.392527540660331 1.392527540660331"
-                animation-mixer="loop: repeat"
-                gltf-model="#animated-asset"
-                
-            ></a-entity>
+            <a-entity id="'ambientlight"  light="type: ambient; intensity: 0.4;"></a-entity>
+          
             <a-entity camera></a-entity>
         </a-scene>
     </body>
