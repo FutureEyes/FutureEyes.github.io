@@ -16,7 +16,6 @@
                     navigator.geolocation.getCurrentPosition(function (position) {
                     let gps = document.createAttribute('gps-entity-place'),
                         arjs = document.createAttribute('arjs'),
-                        welcome = document.getElementById('welcome');
                         myElement = document.getElementById('myElement');
                     arjs.value = 'sourceType: webcam; sourceWidth: 1280; sourceHeight: 960; trackingMethod: best; debugUIEnabled: false;';
                     gps.value = `latitude: ${position.coords.latitude - 0.001}; longitude: ${position.coords.longitude + 0.001}`;
@@ -47,7 +46,6 @@
             </a-assets>
             <a-entity id="'ambientlight"  light="type: ambient; intensity: 0.4;"></a-entity>          
             <a-light type="directional" position="0 0 0" rotation="0 0 0" target="#directionaltarget">
-                <a-text id="welcome" value="Welcome" scale="75 75 75" position="-25 7 -25" color="#000000" ></a-text>
             <a-entity id="directionaltarget" position="0 0 -1"></a-entity>
             <a-entity id="myElement" 
                     look-at="[gps-camera]"
@@ -58,7 +56,7 @@
                                      castShadow: true;
                                      intensity: 0.35;
                                      shadowCameraVisible: true;"
-                              scale="1.2184615980777895 1.2184615980777895 1.2184615980777895"
+                              scale="30 30 30"
                 ></a-entity>
 
              
