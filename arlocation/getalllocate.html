@@ -19,7 +19,7 @@
                     arjs.value = 'sourceType: webcam; sourceWidth: 30; sourceHeight: 20; trackingMethod: best; debugUIEnabled: false;';// github.com/AR-js-org/AR.js/blob/master/aframe/examples/location-based/always-face-user/index.html
                     //use quick &amp; dirty estimate: 111,111 meters (111.111 km), from: gis.stackexchange.com/questions/2951/algorithm-for-offsetting-a-latitude-longitude-by-some-amount-of-meters
                     gps.value = `latitude: ${position.coords.latitude - 0.1}; longitude: ${position.coords.longitude + 0.1}`;
-                    welcome.setAttributeNode(gps);
+                    myElement.setAttributeNode(gps);
                   });
                 }
               }
