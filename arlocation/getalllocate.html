@@ -18,7 +18,7 @@
                         arjs = document.createAttribute('arjs'),
                         myElement = document.getElementById('myElement');
                     arjs.value = 'sourceType: webcam; sourceWidth: 1280; sourceHeight: 960; trackingMethod: best; debugUIEnabled: false;';
-                    gps.value = `latitude: ${position.coords.latitude - 0.001}; longitude: ${position.coords.longitude + 0.001}`;
+                    gps.value = `latitude: ${position.coords.latitude - 0.2}; longitude: ${position.coords.longitude + 0.2}`;
                     log(gps.value);
                     scene.setAttributeNode(gps); /* Apply wrapper to whole scene */
                     scene.setAttributeNode(arjs);
@@ -57,7 +57,7 @@
                                      intensity: 0.35;
                                      shadowCameraVisible: true;"
                               scale="20 20 20"    
-                                                      
+
                 ></a-entity>
 
              
