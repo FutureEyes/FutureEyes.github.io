@@ -19,8 +19,8 @@
                     arjs.value = 'sourceType: webcam; sourceWidth: 30; sourceHeight: 20; trackingMethod: best; debugUIEnabled: false;';// github.com/AR-js-org/AR.js/blob/master/aframe/examples/location-based/always-face-user/index.html
                     //use quick &amp; dirty estimate: 111,111 meters (111.111 km), from: gis.stackexchange.com/questions/2951/algorithm-for-offsetting-a-latitude-longitude-by-some-amount-of-meters
                     gps.value = `latitude: ${position.coords.latitude - 0.1}; longitude: ${position.coords.longitude + 0.1}`;
-                    myElement.setAttributeNode(gps);
-                  });
+                    welcome.setAttributeNode(gps)      
+                            });
                 }
               }
           </script>
@@ -43,6 +43,7 @@
             </a-assets>
             <a-entity id="'ambientlight"  light="type: ambient; intensity: 0.4;"></a-entity>          
             <a-light type="directional" position="0 0 0" rotation="0 0 0" target="#directionaltarget">
+                <a-text id="welcome" value="Welcome" scale="75 75 75" position="-25 7 -25" color="#000000" ></a-text>
             <a-entity id="directionaltarget" position="0 0 -1"></a-entity>
             <a-entity id="myElement" 
                     look-at="[gps-camera]"
