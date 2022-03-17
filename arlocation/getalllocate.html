@@ -7,25 +7,23 @@
         <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
         <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
         <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-        <script type="text/javascript">
-            window.onload = () => {
-                return navigator.geolocation.getCurrentPosition(function (position) {
-                    const entity = document.querySelector('a-asset-item')
-                    const lat = position.coords.latitude + 0.0004
-                    const lng = position.coords.longitude + 0.0004
-                    console.log(entity)
-                    entity.setAttribute('gps-entity-place', `latitude: ${lat}; longitude: ${lng};`);
-                    console.log(position)
-                },
-                    (err) => alert('Error retriving position', err),
-                    {
-                        enableHighAccuracy: true,
-                        maximumAge: 0,
-                        timeout: 27000
-                    }
-                )
-            }
-        </script>
+        <script>
+            const log = console.log;
+              window.onload = () => {
+                let scene = document.querySelector('a-scene');
+                if (navigator.geolocation) {
+                  navigator.geolocation.getCurrentPosition(function (position) {
+                    let gps = document.createAttribute('gps-entity-place'),
+                        arjs = document.createAttribute('arjs'),
+                        myElement = document.getElementById('myElement');
+                    arjs.value = 'sourceType: webcam; sourceWidth: 30; sourceHeight: 20; trackingMethod: best; debugUIEnabled: false;';// github.com/AR-js-org/AR.js/blob/master/aframe/examples/location-based/always-face-user/index.html
+                    //use quick &amp; dirty estimate: 111,111 meters (111.111 km), from: gis.stackexchange.com/questions/2951/algorithm-for-offsetting-a-latitude-longitude-by-some-amount-of-meters
+                    gps.value = `latitude: ${position.coords.latitude - 0.1}; longitude: ${position.coords.longitude + 0.1}`;
+                    welcome.setAttributeNode(gps);
+                  });
+                }
+              }
+          </script>
     </head>
 
     <body style="margin: 0; overflow: hidden;">
@@ -46,7 +44,7 @@
             <a-entity id="'ambientlight"  light="type: ambient; intensity: 0.4;"></a-entity>          
             <a-light type="directional" position="0 0 0" rotation="0 0 0" target="#directionaltarget">
             <a-entity id="directionaltarget" position="0 0 -1"></a-entity>
-                <a-entity
+            <a-entity id="myElement" 
                     look-at="[gps-camera]"
                     animation-mixer="loop: repeat"
                     gltf-model="#animated-asset"
@@ -56,8 +54,6 @@
                                      intensity: 0.35;
                                      shadowCameraVisible: true;"
                               scale="1.2184615980777895 1.2184615980777895 1.2184615980777895"
-                            gps-entity-place="latitude:0; longitude:0;"
-
                 ></a-entity>
 
              
