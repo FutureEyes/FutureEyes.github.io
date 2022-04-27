@@ -1,0 +1,400 @@
+<html>
+
+<head>
+    <title>HearIt!</title>
+
+    <!-- CUSTOM CSS and JS -->
+    <link rel="stylesheet" href="./styles.css">
+
+    <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- <button id="fab_main_btn"></button> -->
+    <model-viewer id="mv" src="./assets/models/katar.glb" poster="./assets/images/katar.png" shadow-intensity="1" ar
+        ar-modes="webxr scene-viewer quick-look" camera-controls alt=" A 3D model carousel" environment-image="neutral">
+
+        <div id="objdesc">
+            <h1 id="objtype"></h1>
+            <div id="temp">
+                <h1 id="objname"></h1>
+            </div>
+        </div>
+
+        <!-- <div id="story-card">
+            Story
+        </div>-->
+
+<!-- the information prompt below -->
+        
+<button id="infoprompt" onclick="on()">
+    <span class="material-icons-outlined">
+        <img src=" ./assets/images/info_black_24dp.svg" alt="" style="height:5vh; width: 5vh; display:inline; position:relative;">
+        <!-- <div style="display:inline;bottom:1.3vh; position:relative;"></div>  -->
+    </span>
+</button>
+
+<button id="pausebtn" onclick="document.getElementById('sound-aud').pause();">
+    <span class="material-icons-outlined">
+        <img src=" ./assets/images/pause_circle_black_24dp.svg" alt="" style="height:5vh; width: 5vh; display:inline; position:relative;">
+        <!-- <div style="display:inline;bottom:1.3vh; position:relative;"></div>  -->
+    </span>
+</button>
+
+<div id="infobox"  onclick="off()">
+<center>
+    <h2 id="infoboxtitle">About this Object</h2>
+
+    <p id="infoboxinfo">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque augue eget justo fermentum hendrerit at at odio. Quisque a dictum nisl. Curabitur libero est, pretium varius bibendum sed, condimentum ut erat. Ut vehicula nibh et nunc tincidunt faucibus. Curabitur mattis porta lectus vel volutpat. Duis nibh purus, porta eget enim eget, mollis pellentesque urna. Ut sodales placerat nibh hendrerit pretium. Maecenas auctor, dui sed ultricies luctus, dui justo gravida felis, a rutrum ipsum magna non nulla. Donec suscipit feugiat tincidunt.
+    </p>
+
+    <div class="closeinfo">
+    <button id="closeinfo" class="fill"  onclick="off()">
+        Close
+    </button>
+</div>
+</center>
+</div>
+
+
+
+    
+        <!-- <button class" anno-btn" slot="hotspot-visor" data-position="" data-normal="">Helmet
+                <div id="annotation">Radiation free visor</div>
+        </button> -->
+
+        <!-- <script>
+
+            var annoData = {
+                "1":
+                    [
+                        { "data_pos": "0 1.75 0.35", "data_point": "0 0 1" }
+                    ],
+                "2":
+                    [
+                        { "data_pos": "0 1.75 0.35", "data_point": "0 0 1" }
+
+                    ],
+                "3":
+                    [
+                        { "data_pos": "0 1.75 0.35", "data_point": "0 0 1" }
+
+                    ]
+            }
+
+
+            document.getElementsById("btn" + string(i)).setAttribute("dataposn", "dataposn[i]");
+            document.getElementsById("btn" + string(i)).setAttribute("datanorml", "datanorml[i]");
+
+           
+        </script> -->
+
+        <button slot="ar-button" id="ar-button">&nbsp;AR</button>
+
+        <div id="ar-prompt">
+            <img src="./assets/images/hand.png">
+        </div>
+
+        <button id="ar-failure">
+            AR is not tracking!
+        </button>
+
+        <!-- button audio-start -->
+        <audio id="sound-aud" src="/assets/audio/katar.wav" preload="auto"></audio>
+        <button id="sound-btn" onclick="document.getElementById('sound-aud').play();">Audio</button>
+        <!-- button audio-end -->
+
+        <!-- interactions-Start -->
+        <div id="interactions">
+
+            <div id="story">
+                <!-- Slider-start -->
+                <div class="slider">
+                    <div class="slides">
+
+                        <!-- INDIAN HERITAGE -->
+
+                        <button class="slide weapon " onclick="switchSrc(this, 'katar');changecontext('Katar','INDIAN HERITAGE -Weapon',0)"
+                            style="background-image: url('./assets/images/katar.png');">
+                        </button>
+
+                        <button class="slide weapon" onclick="switchSrc(this, 'dandpatta');changecontext('Dandpatta','INDIAN HERITAGE -Weapon',1)"
+                            style="background-image: url('./assets/images/dandpatta.png');">
+                        </button> 
+
+                        <button id="bnr" class="slide weapon"
+                            onclick="switchSrc(this, 'bowandarrow');changecontext('Bow & Arrow','INDIAN HERITAGE -Weapon',2)"
+                            >
+                        </button>
+                        
+                        <button id="robot-button" class="slide weapon "
+                            onclick="switchSrc(this, 'trishul');changecontext('Trishul','INDIAN HERITAGE -Weapon',3);"
+                            style="background-image: url('./assets/images/trishul.png')">
+                        </button>
+
+                        <button id="robot-button" class="slide god"
+                            onclick="switchSrc(this, 'laxmi');changecontext('Goddess of Wealth - Laxmi','INDIAN HERITAGE -Gods',4)"
+                            style="background-image: url('./assets/images/laxmi.png');">
+                        </button>
+
+                        <button id="sitar-anno" class="slide god"
+                            onclick="switchSrc(this, 'nandi');changecontext('Guardian deity of Kailash - Nandi','INDIAN HERITAGE -Gods',5)"
+                            style="background-image: url('./assets/images/ox.png');">
+                        </button>
+
+
+                        <button id="robot-button" class="slide god" onclick="switchSrc(this, 'krishna');changecontext('Lord Krishna','INDIAN HERITAGE -Gods',6)"
+                            style="background-image: url('./assets/images/krishna.png');">
+                        </button>
+                        
+
+                        <button class=" slide" onclick="switchSrc(this, 'harappanArtifact');changecontext('Harappan Artifact','INDIAN HERITAGE',7)"
+                            style="background-image: url('./assets/images/harappanArtifact.png');">
+                        </button>
+
+                        <button class=" slide" onclick="switchSrc(this, 'taj');changecontext('Taj Mahal','Architecture',8)"
+                            style="background-image: url('./assets/images/taj.png');">
+                        </button>
+
+                        <button class=" slide" onclick="switchSrc(this, 'suntemple');changecontext('Konark Sun Temple','Architecture',9)"
+                            style="background-image: url('./assets/images/suntemple.jpg');">
+                        </button>
+
+
+                        <!-- MUSIC INSTRUMENTS -->
+                        <button id="sitar-anno" class="slide music"
+                            onclick="switchSrc(this, 'sitar');changecontext('Sitar','Musical  Instrument',10)"
+                            style="background-image: url('./assets/images/sitar.png');">
+                        </button>
+
+                        <button class="slide music"
+                            onclick="switchSrc(this, 'bell');changecontext('Bell','Musical  Instrument',11)"
+                            style="background-image: url('./assets/images/bell.png');">
+                        </button>
+
+                        <button id="robot-button" class="slide music"
+                            onclick="switchSrc(this, 'flute');changecontext('Flute','Musical  Instrument',12)"
+                            style="background-image: url('./assets/images/flute.png');">
+                        </button>
+
+                        <!-- VEHICLES -->
+                        <button class="slide objects"
+                            onclick="switchSrc(this, 'bicycle');changecontext('Bicycle','Vehicle',13)"
+                            style="background-image: url('./assets/images/bicycle.png');">
+                        </button>
+
+                        <button id="earth-button" class="slide objects"
+                            onclick="switchSrc(this, 'bus');changecontext('Bus','Vehicle',14);"
+                            style="background-image: url('./assets/images/bus.png');">
+                        </button>
+
+                        <button id="robot-button" class="slide objects"
+                            onclick="switchSrc(this, 'car');changecontext('Car','Vehicle',15)"
+                            style="background-image: url('./assets/images/car.png');">
+                        </button>
+
+                        <button class="slide objects"
+                            onclick="switchSrc(this, 'helicopter');changecontext('Helicopter','Vehicle',16)"
+                            style="background-image: url('./assets/images/helicopter.png');">
+                        </button>
+
+                        <button class="slide objects"
+                            onclick="switchSrc(this, 'tractor');changecontext('Tractor','Vehicle',17)"
+                            style="background-image: url('./assets/images/tractor.png');">
+                        </button>
+
+
+                        <!-- ANIMALS -->
+                        <button id="robot-button" class="slide animals"
+                            onclick="switchSrc(this, 'dog');changecontext('Dog','Animal',18)"
+                            style="background-image: url('./assets/images/dog.png');">
+                        </button>
+
+                        <button id="robot-button" class="slide animals"
+                            onclick="switchSrc(this, 'cat');changecontext('Cat','Animal',19)"
+                            style="background-image: url('./assets/images/cat.png');">
+                        </button>
+
+                        <button class="slide animals"
+                            onclick="switchSrc(this, 'parrot');changecontext('Parrot','Animal',20)"
+                            style="background-image: url('./assets/images/parrot.png');">
+                        </button>
+
+                        <button class="slide animals"
+                            onclick="switchSrc(this, 'peacock');changecontext('Peacock','Animal',21)"
+                            style="background-image: url('./assets/images/peacock.png');">
+                        </button>
+
+                        <button class="slide animals"
+                            onclick="switchSrc(this, 'tiger');changecontext('Tiger','Animal',22)"
+                            style="background-image: url('./assets/images/tiger.png');">
+                        </button>
+
+                        <button class="slide animals"
+                            onclick="switchSrc(this, 'indianRhino');changecontext('Indian Rhino','Animal',23)"
+                            style="background-image: url('./assets/images/indianRhino.png');">
+                        </button>
+
+                        <button class="slide animals"
+                            onclick="switchSrc(this, 'butterfly');changecontext('Butterfly','Animal',24)"
+                            style="background-image: url('./assets/images/butterfly.png');">
+                        </button>
+
+                        <button class="slide animals" onclick="switchSrc(this, 'robin');changecontext('Robin','Animal',25)"
+                            style="background-image: url('./assets/images/robin.png');">
+                        </button>
+
+
+                        <button class="slide animals"
+                            onclick="switchSrc(this, 'chicken');changecontext('Chicken','Animal',26)"
+                            style="background-image: url('./assets/images/chicken.png');">
+                        </button>
+
+                        <button class="slide animals"
+                            onclick="switchSrc(this, 'elephant');changecontext('Elephant','Animal'),27"
+                            style="background-image: url('./assets/images/elephant.png');">
+                        </button>
+
+                        <button id="earth-button" class="slide thing"
+                            onclick="switchSrc(this, 'earth');changecontext('Earth','Thing',28)"
+                            style="background-image: url('./assets/images/earth.png');">
+                        </button>
+
+                        <button id="robot-button" class="slide thing"
+                            onclick="switchSrc(this, 'RobotExpressive');changecontext('Robot','Thing',29)"
+                            style="background-image: url('./assets/images/RobotExpressive.png');">
+                        </button>
+
+
+                        <button id="sitar-anno" class="slide thing"
+                            onclick="switchSrc(this, 'Astronaut');changecontext('Astronaut','Thing',30)"
+                            style="background-image: url('./assets/images/astronaut.png');">
+                        </button>
+
+
+
+
+
+                    </div>
+                </div>
+                <!-- Slider-end -->
+
+            </div>
+            <!-- Slider-end -->
+
+        </div>
+        <!-- interactions-end -->
+
+    </model-viewer>
+
+    <script type="module">
+        const modelViewer = document.querySelector("model-viewer");
+
+        window.switchSrc = (element, name) => {
+            const base = "./assets/";
+            modelViewer.src = base + "models/" + name + '.glb';
+            modelViewer.poster = base + "images/" + name + '.png';
+            const slides = document.querySelectorAll(".slide");
+            slides.forEach((element) => { element.classList.remove("selected"); });
+            element.classList.add("selected");
+
+            //add sound src dynamically
+            var path = "./assets/audio/";
+            var audiofile = document.getElementById('sound-aud').src = path + name + '.wav';
+
+
+            // ANIMATION 
+            if (name == "RobotExpressive") {
+                modelViewer.setAttribute("animation-name", "Running");
+                modelViewer.autoplay = true;
+            }
+            else if (name == "tiger") {
+                modelViewer.autoplay = true;
+            }
+            else {
+                modelViewer.setAttribute("animation-name", "false");
+                modelViewer.autoplay = false;
+            }
+        };
+
+        document.querySelector(".slider").addEventListener('beforexrselect', (ev) => {
+            // Keep slider interactions from affecting the XR scene.
+            ev.preventDefault();
+        });
+
+    </script>
+    <script>
+
+        function changecontext(name, type,id) {
+
+            fetch("info.json")
+            .then(response=>response.json())
+            .then(obj=>{
+                //for(let i=0;i<obj.info.length;i++){
+                    //if(obj.info[i].name==name){
+                        let info=obj.info[id].text;
+                        document.getElementById("infoboxinfo").innerHTML = info;
+                    //}
+
+                //}
+            });
+            document.getElementById("objname").innerHTML = name;
+            document.getElementById("objtype").innerHTML = type;
+            // document.getElementById("infoboxinfo").innerHTML = info;
+            if (type === "Musical  Instrument") {
+                document.getElementById("mv").style.background = "#cbefbb";
+            }
+            if (type === "Vehicle") {
+                document.getElementById("mv").style.background = "#ffe4bc";
+            }
+            if (type === "Animal") {
+                document.getElementById("mv").style.background = "#c2e8ff";
+            }
+            if (type === "Thing") {
+                document.getElementById("mv").style.background = "#b1b3fd";
+            }
+            if (type === "Architecture") {
+                document.getElementById("mv").style.background = "#b1b3fd";
+            }
+            if (type === "INDIAN HERITAGE -Weapon") {
+                document.getElementById("mv").style.background = "#c9f7f9";
+            }
+            if (type === "INDIAN HERITAGE -Gods") {
+                document.getElementById("mv").style.background = "#fbe8bf";
+            }
+
+
+
+        }
+    </script>
+    <!-- info bbutton script -->
+    <script>
+        function on() {
+          document.getElementById("infobox").style.display = "block";
+        }
+        
+        function off() {
+          document.getElementById("infobox").style.display = "none";
+        }
+        
+        </script>
+
+
+
+    <!-- MISC -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+    </script>
+    <!-- Loads <model-viewer> for old browsers like IE11: -->
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js">
+    </script>
+
+
+</body>
+
+</html>

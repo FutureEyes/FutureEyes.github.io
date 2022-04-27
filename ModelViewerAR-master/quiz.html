@@ -1,0 +1,352 @@
+<html>
+
+<head>
+    <title>HearIt!</title>
+
+    <!-- CUSTOM CSS and JS -->
+    <link rel="stylesheet" href="./styles.css">
+
+    <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+ 
+    <!-- <button id="fab_main_btn"></button> -->
+    <model-viewer id="mv" src="./assets/models/bell.glb" poster="./assets/images/bell.png" shadow-intensity="1" ar
+        ar-modes="webxr scene-viewer quick-look" camera-controls alt=" A 3D model carousel" environment-image="neutral">
+
+        <div id="objdesc">
+            <h1 id="objtype"></h1>
+            <div id="temp">
+                <h1 id="objname"></h1>
+            </div>
+        </div>
+
+        <!-- <div id="story-card">
+            Story
+        </div>-->
+        <button id="infoprompt" onclick="on()">
+            <span class="material-icons-outlined">
+                <img src=" ./assets/images/info_black_24dp.svg" alt="" style="height:3vh; width: 3vh; display:inline; position:relative; bottom:0.3vh;">
+                <div style="display:inline;bottom:1.3vh; position:relative;">info</div> 
+            </span>
+        </button>
+    
+    <div id="infobox"  onclick="off()">
+        <center>
+            <h2 id="infoboxtitle">About this Object</h2>
+
+            <p id="infoboxinfo">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque augue eget justo fermentum hendrerit at at odio. Quisque a dictum nisl. Curabitur libero est, pretium varius bibendum sed, condimentum ut erat. Ut vehicula nibh et nunc tincidunt faucibus. Curabitur mattis porta lectus vel volutpat. Duis nibh purus, porta eget enim eget, mollis pellentesque urna. Ut sodales placerat nibh hendrerit pretium. Maecenas auctor, dui sed ultricies luctus, dui justo gravida felis, a rutrum ipsum magna non nulla. Donec suscipit feugiat tincidunt.
+            </p>
+
+            <div class="closeinfo">
+            <button id="closeinfo" class="fill"  onclick="off()">
+                Close
+            </button>
+        </div>
+        </center>
+    </div>
+        <!-- <button class" anno-btn" slot="hotspot-visor" data-position="" data-normal="">Helmet
+                <div id="annotation">Radiation free visor</div>
+        </button> -->
+
+        <!-- <script>
+
+            var annoData = {
+                "1":
+                    [
+                        { "data_pos": "0 1.75 0.35", "data_point": "0 0 1" }
+                    ],
+                "2":
+                    [
+                        { "data_pos": "0 1.75 0.35", "data_point": "0 0 1" }
+
+                    ],
+                "3":
+                    [
+                        { "data_pos": "0 1.75 0.35", "data_point": "0 0 1" }
+
+                    ]
+            }
+
+
+            document.getElementsById("btn" + string(i)).setAttribute("dataposn", "dataposn[i]");
+            document.getElementsById("btn" + string(i)).setAttribute("datanorml", "datanorml[i]");
+
+           
+        </script> -->
+
+        <button slot="ar-button" id="ar-button">&nbsp;AR</button>
+
+        <div id="ar-prompt">
+            <img src="./assets/images/hand.png">
+        </div>
+
+        <button id="ar-failure">
+            AR is not tracking!
+        </button>
+
+        <!-- button audio-start -->
+        <audio loop id="sound-aud" src="/assets/audio/bell.wav" preload="auto"></audio>
+        <button id="sound-btn" onclick="document.getElementById('sound-aud').play();">Audio</button>
+        <!-- button audio-end -->
+
+        <!-- interactions-Start -->
+        <div id="interactions">
+
+            <div id="story">
+                <!-- Slider-start -->
+                <div class="slider">
+                    <div class="slides">
+
+                        <!-- NEW HERITAGE -->
+
+                        <button id="sitar-anno" class="slide"
+                            onclick="switchSrc(this, 'bowandarrow');changecontext('Bow & Arrow','NEW HR','This is Epic text')"
+                            style="background-image: url('./assets/images/bowandarrow.png);">
+                        </button>
+
+                        <button class=" slide"
+                            onclick="switchSrc(this, 'harappanArtifact');changecontext('Harappan Artifact','NEW HR', '')"
+                            style="background-image: url('./assets/images/harappanArtifact.png');">
+                        </button>
+
+                        <button id="robot-button" class="slide"
+                            onclick="switchSrc(this, 'laxmi');changecontext('Laxmi','NEW HR')"
+                            style="background-image: url('./assets/images/laxmi.png');">
+                        </button>
+
+                        <button id="sitar-anno" class="slide"
+                            onclick="switchSrc(this, 'nandi');changecontext('Nandi','NEW HR')"
+                            style="background-image: url('./assets/images/ox.png');">
+                        </button>
+
+                        <button class="slide"
+                            onclick="switchSrc(this, 'dandpatta');changecontext('Dandpatta','NEW HR')"
+                            style="background-image: url('./assets/images/bell.png');">
+                        </button>
+
+                        <button id="robot-button" class="slide "
+                            onclick="switchSrc(this, 'katar');changecontext('Katar','NEW HR')"
+                            style="background-image: url('./assets/images/flute.png');">
+                        </button>
+
+                        <button id="robot-button" class="slide "
+                            onclick="switchSrc(this, 'trishul');changecontext('Trishul','NEW HR')"
+                            style="background-image: url('./assets/images/flute.png');">
+                        </button>
+
+
+                        <!-- MUSIC INSTRUMENTS -->
+                        <button id="sitar-anno" class="slide music"
+                            onclick="switchSrc(this, 'sitar');changecontext('Sitar','Musical  Instrument')"
+                            style="background-image: url('./assets/images/sitar.png');">
+                        </button>
+
+                        <button class="slide music"
+                            onclick="switchSrc(this, 'bell');changecontext('Bell','Musical  Instrument')"
+                            style="background-image: url('./assets/images/bell.png');">
+                        </button>
+
+                        <button id="robot-button" class="slide music"
+                            onclick="switchSrc(this, 'flute');changecontext('Flute','Musical  Instrument')"
+                            style="background-image: url('./assets/images/flute.png');">
+                        </button>
+
+                        <!-- VEHICLES -->
+                        <button class="slide objects"
+                            onclick="switchSrc(this, 'bicycle');changecontext('Bicycle','Vehicle')"
+                            style="background-image: url('./assets/images/bicycle.png');">
+                        </button>
+
+                        <button id="earth-button" class="slide objects"
+                            onclick="switchSrc(this, 'bus');changecontext('Bus','Vehicle');"
+                            style="background-image: url('./assets/images/bus.png');">
+                        </button>
+
+                        <button id="robot-button" class="slide objects"
+                            onclick="switchSrc(this, 'car');changecontext('Car','Vehicle')"
+                            style="background-image: url('./assets/images/car.png');">
+                        </button>
+
+                        <button class="slide objects"
+                            onclick="switchSrc(this, 'helicopter');changecontext('Helicopter','Vehicle')"
+                            style="background-image: url('./assets/images/helicopter.png');">
+                        </button>
+
+                        <button class="slide objects"
+                            onclick="switchSrc(this, 'tractor');changecontext('Tractor','Vehicle')"
+                            style="background-image: url('./assets/images/tractor.png');">
+                        </button>
+
+
+                        <!-- ANIMALS -->
+                        <button id="robot-button" class="slide animals"
+                            onclick="switchSrc(this, 'dog');changecontext('Dog','Animal')"
+                            style="background-image: url('./assets/images/dog.png');">
+                        </button>
+
+                        <button id="robot-button" class="slide animals"
+                            onclick="switchSrc(this, 'cat');changecontext('Cat','Animal')"
+                            style="background-image: url('./assets/images/cat.png');">
+                        </button>
+
+                        <button class="slide animals"
+                            onclick="switchSrc(this, 'parrot');changecontext('Parrot','Animal⠀⠀⠀⠀⠀')"
+                            style="background-image: url('./assets/images/parrot.png');">
+                        </button>
+
+                        <button class="slide animals"
+                            onclick="switchSrc(this, 'peacock');changecontext('Peacock','Animal⠀⠀⠀⠀⠀')"
+                            style="background-image: url('./assets/images/peacock.png');">
+                        </button>
+
+                        <button class="slide animals"
+                            onclick="switchSrc(this, 'tiger');changecontext('Tiger','Animal⠀⠀⠀⠀⠀')"
+                            style="background-image: url('./assets/images/tiger.png');">
+                        </button>
+
+                        <button class="slide animals"
+                            onclick="switchSrc(this, 'indianRhino');changecontext('Indian Rhino','Animal⠀⠀⠀⠀⠀')"
+                            style="background-image: url('./assets/images/indianRhino.png');">
+                        </button>
+
+                        <button class="slide animals"
+                            onclick="switchSrc(this, 'butterfly');changecontext('Butterfly','Animal')"
+                            style="background-image: url('./assets/images/butterfly.png');">
+                        </button>
+
+                        <button class="slide animals" onclick="switchSrc(this, 'robin');changecontext('Robin','Animal')"
+                            style="background-image: url('./assets/images/robin.png');">
+                        </button>
+
+
+                        <button class="slide animals"
+                            onclick="switchSrc(this, 'chicken');changecontext('Chicken','Animal')"
+                            style="background-image: url('./assets/images/chicken.png');">
+                        </button>
+
+                        <button class="slide animals"
+                            onclick="switchSrc(this, 'elephant');changecontext('Elephant','Animal')"
+                            style="background-image: url('./assets/images/elephant.png');">
+                        </button>
+
+                        <button id="earth-button" class="slide thing"
+                            onclick="switchSrc(this, 'earth');changecontext('Earth','Thing⠀⠀⠀⠀⠀⠀⠀')"
+                            style="background-image: url('./assets/images/earth.png');">
+                        </button>
+
+                        <button id="robot-button" class="slide thing"
+                            onclick="switchSrc(this, 'RobotExpressive');changecontext('Robot','Thing⠀⠀⠀⠀⠀⠀⠀')"
+                            style="background-image: url('./assets/images/RobotExpressive.png');">
+                        </button>
+
+
+                        <button id="sitar-anno" class="slide thing"
+                            onclick="switchSrc(this, 'Astronaut');changecontext('Astronaut','Thing⠀⠀⠀⠀⠀⠀⠀')"
+                            style="background-image: url('./assets/images/astronaut.png');">
+                        </button>
+
+
+
+
+
+                    </div>
+                </div>
+                <!-- Slider-end -->
+
+            </div>
+            <!-- Slider-end -->
+
+        </div>
+        <!-- interactions-end -->
+
+    </model-viewer>
+
+    <script type="module">
+        const modelViewer = document.querySelector("model-viewer");
+
+        window.switchSrc = (element, name) => {
+            const base = "./assets/";
+            modelViewer.src = base + "models/" + name + '.glb';
+            modelViewer.poster = base + "images/" + name + '.png';
+            const slides = document.querySelectorAll(".slide");
+            slides.forEach((element) => { element.classList.remove("selected"); });
+            element.classList.add("selected");
+
+            //add sound src dynamically
+            var path = "./assets/audio/";
+            var audiofile = document.getElementById('sound-aud').src = path + name + '.wav';
+
+
+            // ANIMATION 
+            if (name == "RobotExpressive") {
+                modelViewer.setAttribute("animation-name", "Running");
+                modelViewer.autoplay = true;
+            }
+            else if (name == "tiger") {
+                modelViewer.autoplay = true;
+            }
+            else {
+                modelViewer.setAttribute("animation-name", "false");
+                modelViewer.autoplay = false;
+            }
+        };
+
+        document.querySelector(".slider").addEventListener('beforexrselect', (ev) => {
+            // Keep slider interactions from affecting the XR scene.
+            ev.preventDefault();
+        });
+
+    </script>
+    <script>
+
+        function changecontext(name, type) {
+            document.getElementById("objname").innerHTML = name;
+            document.getElementById("objtype").innerHTML = type;
+            if (type === "Musical  Instrument") {
+                document.getElementById("mv").style.background = "#cbefbb";
+            }
+            if (type === "Vehicle") {
+                document.getElementById("mv").style.background = "#ffe4bc";
+            }
+            if (type === "Animal⠀⠀⠀⠀⠀") {
+                document.getElementById("mv").style.background = "#c2e8ff";
+            }
+            if (type === "Thing⠀⠀⠀⠀⠀⠀⠀") {
+                document.getElementById("mv").style.background = "#b1b3fd";
+            }
+            if (type === "Weapon       ") {
+                document.getElementById("mv").style.background = "#5ce1e6";
+            }
+
+        }
+    </script>
+
+
+    <script>
+function on() {
+  document.getElementById("infobox").style.display = "block";
+}
+
+function off() {
+  document.getElementById("infobox").style.display = "none";
+}
+
+</script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"/>
+    // <!-- Loads <model-viewer> for old browsers like IE11: -->
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js">
+    </script>
+
+
+</body>
+
+</html>
+  

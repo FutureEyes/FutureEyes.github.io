@@ -1,0 +1,74 @@
+@atharvapatil22 @Swado @mysmyst
+Bros 
+My net is ded
+
+______________________________( categories )____________________________________________________________________    
+                                /       \              \            \        \
+                              Animals  Instruments     Places       Objects   prominent indian
+                              /             \            \            \         \
+                             Tiger           Sitar       Taj Mahal               Modi
+                            /                    \           \                     \
+                                                Veena                             Buddha
+                          
+
+                                
+__________________________________________________________________________________________________________________                                   
+Animals{
+
+  //DOMESTIC
+  cat
+  dog
+  cow
+  
+  //WILD
+  tiger
+  Peacock
+  
+  //BIRDS
+  crow
+} 
+Instruments{
+  flute
+} 
+Places{
+  
+}
+Toy {
+  
+}
+Objects{
+  car
+  bus
+  
+}
+
+ buttons
+         b1 name1
+         b2 name2 
+         b3 name3
+         .
+         .
+         .
+        b2 namen
+hotspots
+         obj1
+              datapoint1
+              datanormal1         
+
+              datapoint2
+              datanormal2
+        obj2
+              datapoint1
+              datanormal1         
+        .
+        .
+        .
+        objn
+            .
+            .
+            .
+            datapointn
+            .
+            .
+            .
+            datanormaln      
