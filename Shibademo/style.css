@@ -1,0 +1,130 @@
+:not(:defined) > * {
+    display: none;
+  }
+   table {
+          border: 0px solid black;
+          width: 100%;
+          background: rgba(255, 255, 255, 0.0);
+        }
+  
+        th, td {
+          border: 0px solid black;
+          text-align: center;
+          width: 50%;
+          padding: 10px;
+          font-family: 'Roboto', sans-serif;
+        }
+        p {
+      display: block;
+      margin-block-start: 0em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      }
+   
+  
+  body, html { 
+      width: 100vw;
+      height: 100vh;
+      padding: 0;
+      margin: 0;
+  }
+  model-viewer {
+      width: 100vw;
+      height: 100vh;
+      --poster-color: #fff0;
+  }
+  .fullscreen {
+        position: absolute;
+      width: 100vw;
+      height: 100vh;
+      left: 0;
+      top: 0;
+  }
+  .progress-bar {
+    display: block;
+    width: 33%;
+    height: 10%;
+    max-height: 2%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    border-radius: 25px;
+    box-shadow: 0px 3px 10px 3px rgba(0, 0, 0, 0.5), 0px 0px 5px 1px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+  }
+  
+  .progress-bar.hide {
+    visibility: hidden;
+    transition: visibility 0.3s;
+  }
+  
+  .update-bar {
+    background-color: rgba(20, 20, 20, 0.9);
+    width: 0%;
+    height: 100%;
+    border-radius: 25px;
+    float: left;
+    transition: width 0.3s;
+  }
+  
+  #ar-button {
+    background-image: url(ar_icon.png);
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    background-position: 2px 50%;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    bottom: 12px;
+    padding: 0px 16px 0px 40px;
+    font-family: Roboto Regular, Helvetica Neue, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color:#4c4c4c;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 5px;
+    border: 1px solid #DADCE0;
+  }
+  
+  #ar-button:active {
+    background-color: #E8EAED;
+  }
+  
+  #ar-button:focus {
+    outline: none;
+  }
+  
+  #ar-button:focus-visible {
+    outline: 1px solid #4285f4;
+  }
+  
+  @keyframes circle {
+    from { transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg); }
+    to   { transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg); }
+  }
+  
+  @keyframes elongate {
+    from { transform: translateX(100px); }
+    to   { transform: translateX(-100px); }
+  }
+  
+  model-viewer > #ar-prompt {
+    position: absolute;
+    left: 50%;
+    bottom: 175px;
+    animation: elongate 2s infinite ease-in-out alternate;
+    display: none;
+  }
+  
+  model-viewer[ar-status="session-started"] > #ar-prompt {
+    display: block;
+  }
+  
+  model-viewer > #ar-prompt > img {
+    animation: circle 4s linear infinite;
+  }

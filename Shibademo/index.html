@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <style>
+        model-viewer {
+            width: 100%;
+            height: 400px;
+        }
+
+        #controls {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            font-family: Roboto Regular, Helvetica Neue, sans-serif;
+            font-size: 16px;
+            background-color: #fff8;
+            padding: 16px;
+            border-radius: 16px;
+        }
+
+        select {
+            font-size: 16px;
+        }
+    </style>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+
+<body>
+    <model-viewer src="shiba/shiba.gltf" alt="A 3D model of a shoe" camera-controls ar
+        ar-modes="webxr scene-viewer quick-look" shadow-intensity="1">
+        <div id="controls">
+            <label for="diffuse">Style: </label>
+            <select id="diffuse">
+                <option value="shiba/Dark.png">Default</option>
+                <option value="shiba/Red.png">Red</option>
+                <option value="shiba/default.png">Light</option>
+            </select>
+        </div>
+    </model-viewer>
+    <script type="module">
+        const modelViewerTexture = document.querySelector("model-viewer");
+
+        modelViewerTexture.addEventListener("load", (ev) => {
+
+            let material = modelViewerTexture.model.materials[0];
+
+            let applyPBRTexture = (channel, event) => {
+                material.pbrMetallicRoughness[channel].texture.source.setURI(event.target.value);
+            }
+
+            document.querySelector('#diffuse').addEventListener('input', (event) => {
+                applyPBRTexture('baseColorTexture', event);
+            });
+
+        })
+
+    </script>
+</body>
+
+</html>
