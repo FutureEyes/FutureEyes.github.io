@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>&lt;model-viewer&gt; template</title>
+    <meta charset="utf-8">
+    <meta name="description" content="&lt;model-viewer&gt; template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" href="./styles.css" rel="stylesheet"/>
+    <!-- OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
+    <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
+  </head>
+  <body>
+    <!-- <model-viewer> HTML element -->
+    <model-viewer id="pickMaterial" bounds="tight" src="TID 6.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls environment-image="neutral" poster="poster.webp" shadow-intensity="1">
+      <div class="progress-bar hide" slot="progress-bar">
+          <div class="update-bar"></div>
+      </div>
+      <button slot="ar-button" id="ar-button">
+          View in your space
+      </button>
+      <div id="ar-prompt">
+          <img src="ar_hand_prompt.png">
+      </div>
+        <div class="controls">
+        <button id="prev" style="position: absolute;left:0;bottom:0;background-color: #000!important;color: #fff!important;opacity: 0.5;font-size: 200%;">prev</button>
+          <a id="like" style="position: absolute;top:10%;left:45%;font-size: 200%;color:black;">♥</a>
+          <a id="like" style="position: absolute;bottom:0;left:33%;font-size: 200%;">Page 1/50</a>
+        <button id="next" style="position: absolute;right:0;bottom:0;background-color: #000!important;color: #fff!important;opacity: 0.5;font-size: 200%;">next</button>
+       </div>
+    </model-viewer>  
+    <script src="script.js"></script>
+    <!-- Loads <model-viewer> for browsers: -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    
+    <script type="module">
+const modelViewer = document.querySelector("model-viewer#pickMaterial");
+let animaindex = 0;
+let animetime = 0;
+let anidur = 0.85;
+    
+      
+modelViewer.addEventListener("load", () => {
+
+  const changeColor = async (event) => {
+    let material = modelViewer.materialFromPoint(event.clientX, event.clientY);
+
+    if(material != null) {
+      //console.log(material.name);
+      //console.log(modelViewer.availableAnimations);
+      if(modelViewer.paused == true)
+      {
+        if(material.name.slice(0,1) == "F" && material.name.slice(1,2) == (animaindex+1))
+        {   
+        animate("F");
+        }
+         if(material.name.slice(0,1) == "B" && material.name.slice(1,2) == (animaindex))
+        {   
+        animate("B");
+        }
+      }
+    }
+  }
+  
+  function animate(type) 
+  {
+        if(modelViewer.paused == true)
+        {
+        if(type=="F"){
+        modelViewer.currentTime=anidur*animaindex;
+        animaindex++;
+        animetime=anidur*animaindex;
+        }else
+        {
+        modelViewer.currentTime=(4-animaindex)*anidur;
+        animaindex--;
+        animetime=(4-animaindex)*anidur;
+        //animaindex=animaindex-2;
+        }
+        //  modelViewer.timeScale = 1;
+        // await modelViewer.updateComplete;
+        modelViewer.play();
+        console.log(modelViewer.currentTime);
+        setTimeout(function () 
+            {
+              //console.log(modelViewer.currentTime);
+              modelViewer.pause();
+              modelViewer.currentTime=animetime;
+            }, 800);
+        /*for (let i = 1; i < 90; i++) 
+        {
+            setTimeout(function () 
+            {
+               console.log(modelViewer.currentTime);
+               if(modelViewer.currentTime >= animtime)
+                {
+                   console.log(modelViewer.currentTime);
+                   modelViewer.pause();
+                   modelViewer.currentTime=animtime;
+                }
+              }, 10*i);
+        }*/
+        }
+   }
+
+  startup();
+  async function startup() {
+  modelViewer.animationName = "flip";
+  await modelViewer.updateComplete;
+  modelViewer.updateComplete;
+  modelViewer.play({repetitions:1});
+  modelViewer.pause();
+  modelViewer.currentTime=0;
+  modelViewer.addEventListener("click", changeColor);
+  document.querySelector('#prev').addEventListener('click', () => {
+    if(animaindex!=0 && modelViewer.paused == true)
+    animate("B");
+  });
+  document.querySelector('#next').addEventListener('click', () => {
+    if(animaindex!=2 && modelViewer.paused == true)
+    animate("F");
+});  
+  }
+});
+
+</script>
+  </body>
+</html>
