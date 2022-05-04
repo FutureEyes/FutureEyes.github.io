@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const {renderer, scene, camera} = mindarThree;
 
    const spotlight = new THREE.SpotLight(0xffffff,4);
-  //  const directionlight = new THREE.dlight(0xffffff,4);
-  //  directionlight.castShadow = true;
+   const directionlight = new THREE.dlight(0xffffff,4);
+   directionlight.castShadow = true;
    spotlight.shadow.bias = -0.0001;
    spotlight.shadow.mapSize.width = 1024*4;
    spotlight.shadow.mapSize.height = 1024*4;
@@ -32,10 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
   
 
 
-    const gltf = await loadGLTF('asset/asset.gltf');
-    gltf.scene.scale.set(1.04, 1.04, 1.04);
+    const gltf = await loadGLTF('asset/NUEN_upload.glb');
+    gltf.scene.scale.set(1, 1, 1);
     gltf.scene.position.set(0, -0.4, 0);
-    gltf.scene.rotation.set(Math.PI/2,0,0);   
+    gltf.scene.rotation.set(0,0,0);   
     
     const anchor = mindarThree.addAnchor(0);
     anchor.group.add(gltf.scene);
