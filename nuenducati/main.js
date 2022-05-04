@@ -13,11 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const {renderer, scene, camera} = mindarThree;
 
    const spotlight = new THREE.SpotLight(0xffffff,4);
-   const directionlight = new THREE.dlight(0xffffff,4);
-   directionlight.castShadow = true;
+  //  const directionlight = new THREE.dlight(0xffffff,4);
+  //  directionlight.castShadow = true;
    spotlight.shadow.bias = -0.0001;
    spotlight.shadow.mapSize.width = 1024*4;
    spotlight.shadow.mapSize.height = 1024*4;
+   const light = new THREE.HemisphereLight( 0xffffff, 0xbbbbff, 1 );
+  scene.add(light);
     // scene.add( directionlight );
 
   // spotlight.position.set(-50,50,50);
