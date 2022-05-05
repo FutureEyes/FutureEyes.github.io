@@ -86,15 +86,15 @@ document.addEventListener('DOMContentLoaded', () => {
     hat2Anchor.group.add(hat2.scene);
 
     const earringLeft = await loadGLTF('./asset/models/earring/scene.gltf');
-    earringLeft.scene.position.set(0, -0.3, -0.3);
-    earringLeft.scene.scale.set(0.05, 0.05, 0.05);
+    earringLeft.scene.position.set(0, 0, 0);
+    earringLeft.scene.scale.set(0.01, 0.01, 0.01);
     earringLeft.scene.renderOrder = 1;
     const earringLeftAnchor = mindarThree.addAnchor(127);
     earringLeftAnchor.group.add(earringLeft.scene);
 
     const earringRight = await loadGLTF('./asset/models/earring/scene.gltf');
-    earringRight.scene.position.set(0, -0.3, -0.3);
-    earringRight.scene.scale.set(0.05, 0.05, 0.05);
+    earringRight.scene.position.set(0, 0, 0);
+    earringLeft.scene.scale.set(0.01, 0.01, 0.01);
     earringRight.scene.renderOrder = 1;
     const earringRightAnchor = mindarThree.addAnchor(356);
     earringRightAnchor.group.add(earringRight.scene);
