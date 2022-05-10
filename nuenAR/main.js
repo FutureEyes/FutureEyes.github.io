@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     anchor.group.add(raccoon.scene);
 
-    anchor.group.add(plane);
 
     await mindarThree.start();
     renderer.setAnimationLoop(() => {
