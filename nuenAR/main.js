@@ -12,17 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const {renderer, scene, camera} = mindarThree;
 
-    const geometry = new THREE.PlaneGeometry(1, 1);
-    const material = new THREE.MeshBasicMaterial({color: 0x00ffff, transparent: true, opacity: 0.5});
-    const plane = new THREE.Mesh(geometry, material);
+    
 
     const anchor = mindarThree.addAnchor(0);
     const light = new THREE.HemisphereLight( 0xffffff, 0xbbbbff, 1 );
     scene.add(light);
 
     const raccoon = await loadGLTF('./assets/models/nuen/NUEN.glb');
-    raccoon.scene.scale.set(0.1, 0.1, 0.1);
-    raccoon.scene.position.set(0, -0.4, 0);
+    raccoon.scene.scale.set(1, 1, 1);
+    raccoon.scene.position.set(0, 0, 0);
 
     
     anchor.group.add(raccoon.scene);
