@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const light = new THREE.HemisphereLight( 0xffffff, 0xbbbbff, 1 );
     scene.add(light);
 
-    const nuenone = await loadGLTF('./assets/models/nuen/NUEN.glb');
+    const nuenone = await loadGLTF('./assets/models/nuen/NUEN175.glb');
     nuenone.scene.scale.set(5, 5, 5);
     nuenone.scene.position.set(0, 0, 0);
     nuenone.scene.rotation.set( Math.PI/2, 0,0);
