@@ -15,14 +15,37 @@ document.addEventListener('DOMContentLoaded', () => {
     
 
     const anchor = mindarThree.addAnchor(0);
-    const light = new THREE.HemisphereLight( 0xffffff, 0xbbbbff, 1 );
-    scene.add(light);
+    // const light = new THREE.HemisphereLight( 0xffffff, 0xbbbbff, 1 );
+    // scene.add(light);
+    const  light =  new THREE.DirectionalLight( 0xffffff, 2 );
+  //const  light = new THREE.SpotLight(0x404040 ,4);
+  light.position.set( 100, 1000, 100 );
+  light.castShadow = true;
+        light.shadow.bias = -0.0001;
+        light.shadow.mapSize.width = 1024*4;
+        light.shadow.mapSize.height = 1024*4;
+        light.shadow.camera.near = 500;
+        light.shadow.camera.far = 4000;
+        light.shadow.camera.fov = 30;
+        scene.add( light );
 
-    const nuenone = await loadGLTF('./assets/models/nuen/NUEN175.glb');
-    nuenone.scene.scale.set(5, 5, 5);
-    nuenone.scene.position.set(0, 0, 0);
+       const  hemiLight = new THREE.HemisphereLight(0xffeeb1, 0x080820, 4);
+        scene.add(hemiLight);
+
+        // renderer = new THREE.WebGLRenderer();
+        // renderer.toneMapping = THREE.ReinhardToneMapping;
+        // renderer.toneMappingExposure = 2.3;
+        // renderer.setSize(window.innerWidth,window.innerHeight);
+        // renderer.shadowMap.enabled = true;
+        // document.body.appendChild(renderer.domElement);
+    
+    const nuenone = await loadGLTF('./assets/models/nuen/NUEN.glb');
+    nuenone.scene.scale.set(8, 8, 8);
+    nuenone.scene.position.set(-0.3, 0, 0);
     nuenone.scene.rotation.set( Math.PI/2, 0,0);
-
+    nuenone.castShadow = true;
+    nuenone.receiveShadow = true;
+   
 
     
     anchor.group.add(nuenone.scene);
