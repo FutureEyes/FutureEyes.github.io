@@ -5,11 +5,35 @@
 </head>
 
 <body>
-  <a-scene>
+  <a-scene background="color: grey" renderer="sortObjects: false">
     <a-assets>
-      <a-asset-item id="portal" src="image-portal.glb"></a-asset-item>
+      <a-asset-item id="beach" src="image-portal.glb"></a-asset-item>
+     
     </a-assets>
-    <a-entity image-portal="src: #portal"></a-entity>
+    <a-entity rotation="0 90 0" >
+    <a-camera position="0 1.2 0" wasd-controls="acceleration: 20"></a-camera>
+    </a-entity>
+    <a-entity position="-3 1.2 0" rotation="0 90 0" image-portal="src: #beach"></a-entity>
+    <!-- <a-entity position="0 1.2 -1" rotation="0 0 0" image-portal="src: #spring"></a-entity>
+    <a-entity position="1 1.2 0" rotation="0 -90 0" image-portal="src: #winter"></a-entity>
+    <a-entity position="0 1.2 1" rotation="0 180 0" image-portal="src: #transparent"></a-entity> -->
+    <!-- <a-gltf-model
+      src="#leaf"
+      scale="0.2 0.2 0.2"
+      position="-3 4 0"
+      rotation="90 0 0"
+      mesh-particles="
+      lifeTime: 1..8;
+      spawnRate: 100;
+      color: yellow,red;
+      acceleration: 0 0 0;
+      velocity: 0 0 1..0 0 5;
+      radialVelocity: 0;
+      radialPosition: 0.1..10;
+      radialType: circle;
+      rotation: 0 0 0,180 180 180;
+      "
+    ></a-gltf-model> -->
   </a-scene>
 </body>
 </html>
